@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{cancel}
+\usepackage{hyperref}
+
+\usepackage{datetime}
+\newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\title{The Diagonal Argument, Clarified and Generalized}
+\author{poypoyan}
+\date{\petsa\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The diagonal argument is a key ingredient in proving both the uncountability of $2^{\omega}$ (which is a celebrated Cantor's usage of the argument) and the same-named diagonal lemma (which is used in proving Gödel's first incompleteness theorem). In this short note we present a simple formulation of the diagonal argument that is applicable to both results, and hopefully to a lot more.
+\end{abstract}
+
+\section{Introduction}
+Well the abstract introduced already. We think that doing this formulation ``exercise" provided us with a clearer understanding of the concepts surrounding diagonal lemma and Cantor's diagonal argument. Now let's get into the main thing!
+
+\section{Diagonal Argument}
+\begin{lemma}\label{diag-arg}
+Let $A, B, C$ be sets such that:
+\begin{enumerate}
+	\item $C$ is a set of functions from $A \rightarrow B$.
+	\item There exists a bijection $f:A \rightarrow C$.
+\end{enumerate}
+Then there exists a function $d:A \rightarrow B$ such that $d(x) = (f(x))(x)$.
+\end{lemma}
+\begin{proof}
+Trivial! For every $x \in A$, $f(x)$ is unique in $C$. Letting $c = f(x)$, $c(x)$ is unique in $B$ because $c:A \rightarrow B$.
+\end{proof}
+
+\section{Cantor's Diagonal Argument}
+We follow Cantor's original diagonal argument for the uncountability of $2^{\omega}$ in \cite{cantor}, which he further used to show the uncountability of the set of real numbers $\mathbb{R}$. We'll interpret $2^{\omega}$ as the set of \textit{all} functions from $\omega \rightarrow 2$.
+
+The proof starts by assuming that there is a bijection $f:\omega \rightarrow 2^{\omega}$. This $f$ is actually the indexing of elements of $2^{\omega}$, more commonly shown as the ``listing" of infinite binary sequences. Applying Lemma \ref{diag-arg} to $A = \omega$, $B = 2$, $C = 2^{\omega}$, and $f$ gives the diagonal function $d:\omega \rightarrow 2$. What we really need is $d':\omega \rightarrow 2$ such that $d'(x) = 1 - d(x)$; $d'$ is more commonly shown as the ``diagonal" sequence constructed from the one's complement of the diagonal bits in the list. Now one may notice that for all $c \in 2^{\omega}$, $c \ne d'$ because $c(f^{-1}(c)) \ne d'(f^{-1}(c))$. Hence $d' \not\in 2^{\omega}$, but this is in contradiction to the definition of $2^{\omega}$. Therefore the initial assumption of existence of bijection $f:\omega \rightarrow 2^{\omega}$ is false, and this completes the proof.
+
+One may notice that a variant of the more general \textit{Cantor's theorem}, $2^{A} > A$ for any set $A$, can be proven similarly.
+
+\section{Gödel-Carnap Diagonal Lemma}
+We'll just do an informal sketch. Setup first: let $\Gamma$ be a logic on a language $\mathcal{L}$, $N \subset \mathcal{L}$ be the set of all ``objects of study" of $\Gamma$, $P \subset \mathcal{L}$ be the set of all ``definable" propositions, and $C \subset \mathcal{L}$ be the set of all definable predicates with only one free variable $x$. For example, if $\Gamma = \textsf{PA}$, (Classical) Peano Arithmetic, then the strings $``\textsf{S0}", ``\textsf{SS0}" \in N$, and $``x + \textsf{S0} = \textsf{SS0}" \in C$. In an abuse of notation, while $c \in C$ is a string, it can also be treated as a function $c:N \rightarrow P$. For example in \textsf{PA}, $``x + \textsf{S0} = \textsf{SS0}"(``\textsf{S0}") = ``\textsf{S0} + \textsf{S0} = \textsf{SS0}"$.
+
+One requirement of the lemma is the existence of the so-called \textit{Gödel numbering} which is an injective (total) function $g:\mathcal{L} \rightarrow N$. We can now apply the diagonal argument: applying Lemma \ref{diag-arg} to $A = \{x \in N \mid g^{-1}(x) \in C\}$, $B = P$, $C$ is itself, and $f = g^{-1}$ restricted to $A$, gives the diagonal function $d: A \rightarrow B$ such that $d(x) = (g^{-1}(x))(x)$. We can now present a strong variant of the lemma:
+
+\begin{lemma}
+If $d$ is definable in $\mathcal{L}$ (in short, $d \in C$) and for all $c_1, c_2 \in C$, $c_1 \circ g \circ c_2 \in C$, then for every $c \in C$, there exists a predicate $x \in C$ such that $x = c \circ g \circ x$.
+\end{lemma}
+\begin{proof}
+Define a new predicate $h = c \circ g \circ d$. This is in $C$ because both $c, d \in C$. We can now define $x = h \circ g \circ h$. This works because $h \circ g \circ h = c \circ g \circ d \circ (g \circ h) = c \circ g \circ (g^{-1}(g \circ h))(g \circ h) = c \circ g \circ (h \circ g \circ h)$.
+\end{proof}
+
+This proof is based from Section 2.2 of \cite{salehi}\footnote{The``$\varrho$" there is defined as $g \circ d$ here.} which ultimately came from \cite{jeroslow}. The name of lemma is not due to the resemblance to the statement, but to the usage of a diagonal function in its proof!
+
+Lastly, the reason we say that the presented lemma is ``strong" is that the more commonly presented property of $x$ is something like $\Gamma \vdash \forall n: x(n) \leftrightarrow (c \circ g \circ x)(n)$ \footnote{Note though that the weaker property requires that $``\forall", ``\leftrightarrow" \in \mathcal{L}$.}, and surely that is weaker than $x = c \circ g \circ x$.
+
+\bibliographystyle{plain}
+\bibliography{diagonal}
+\end{document}
