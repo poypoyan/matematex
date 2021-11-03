@@ -1,7 +1,6 @@
 \documentclass{article}
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
 \usepackage{amsmath, amssymb, amsthm}
-\usepackage{cancel}
 \usepackage{hyperref}
 
 \usepackage{datetime}
@@ -61,7 +60,7 @@ Define a new predicate $h = c \circ g \circ d$. This is in $C$ because both $c, 
 
 This proof is based from Section 2.2 of \cite{salehi} \footnote{The``$\varrho$" there is defined as $g \circ d$ here.} which ultimately came from \cite{jeroslow}. The name of lemma is not due to the resemblance to the statement, but to the usage of a diagonal function in its proof!
 
-Lastly, the reason we say that the presented lemma is ``strong" is that the more commonly presented property of $x$ is something like $\Gamma \vdash \forall n: x(n) \leftrightarrow (c \circ g \circ x)(n)$ \footnote{Note though that the weaker property requires that $``\ \forall\ ", ``\leftrightarrow" \in \mathcal{L}$.}, and surely that is weaker than $x = c \circ g \circ x$.
+Lastly, the reason we say that the presented lemma is ``strong" is that the more commonly presented property of $x$ is something like $\Gamma \vdash x(n) \leftrightarrow (c \circ g \circ x)(n)$ \footnote{Note that the weaker property requires $``\leftrightarrow" \in \mathcal{L}$.} with a valid $n \in N$, and surely that is weaker than $x = c \circ g \circ x$.
 
 \bibliographystyle{plain}
 \bibliography{diagonal}
