@@ -46,7 +46,7 @@ Let $T_n: S_n \rightarrow \mathbb{R}^n$ (again, for $n \ge 2$) be the transforma
 \end{definition}
 
 \begin{exercise}[aka I am lazy]
-Prove that $T_n$ is bijective \textit{except in origin} either by explicit construction of $T_n^{-1}$, or by showing surjection and injection. Please utilize induction if possible.
+Prove that $T_n$ is bijective \textit{except at origin} either by explicit construction of $T_n^{-1}$, or by showing surjection and injection. Please utilize induction if possible.
 \end{exercise}
 
 \begin{definition}
@@ -81,7 +81,7 @@ Here are some other ideas/comments for further study of the concepts outlined in
 \begin{itemize}
 	\item The limit in Definition \ref{equiv} can be simplified to $$\lim_{x \rightarrow 0^+}\frac{T_n^{-1}(f(x))}{T_n^{-1}(g(x))} = (1, \theta_1, \ldots, \theta_{n-1}).$$ This suggests a weakening of the equivalence relation: the limit should now be $(r, \theta_1, \ldots, \theta_{n-1})$ for any $r > 0$.
 	\item The dimension $n=1$ is omitted because $\mathbb{R}^1=\mathbb{R}$ doesn't exactly fit in Definition \ref{hsc} (maybe $S_1 = \mathbb{R}_{\ge 0} \times \{+, -\}$?). Nevertheless, defining $\sim_1$ is simpler because the supposed `multiplication/division on HSC' is just the usual multiplication and division on $\mathbb{R}$, respectively.
-	\item Of course there are fractals beyond $C_n$ like the well-known Sierpiński carpet! The first idea is that paths on \textit{sets} can be defined as $f:[0,1] \rightarrow 2$. Fortunately there is no notion of continuity and HSC anymore. Then the next idea is to modify the $\epsilon$ part of the $\epsilon$-$\delta$ definition: instead of $|f(x)-L|<\epsilon$, we simply have $f(x) \oplus L = 1$, where $\oplus$ is the XOR operation. These ideas should generalize to other sets aside from $\mathbb{R}^n$ and $2$.
+	\item Of course there are fractals beyond $C_n$ like the well-known Sierpiński carpet! The first idea is that paths on \textit{sets} can be defined as $f:[0,1] \rightarrow 2$. Fortunately there are no notions of continuity, HSC, and hyper-rotation anymore. Then the next idea is to modify the $\epsilon$ part of the $\epsilon$-$\delta$ definition: instead of $|f(x)-L|<\epsilon$, we simply have $f(x) \oplus L = 0$, where $\oplus$ is the XOR operation. The last idea is to define a suitable `multiplication' and `division': maybe the XOR operation can also be used for that. These ideas should generalize to other sets aside from $\mathbb{R}^n$ and $2$.
 \end{itemize}
 
 \bibliographystyle{plain}

@@ -87,7 +87,7 @@ To aid in understanding the concepts, an example rooted tree is provided in Figu
 The algorithm consists of three main functions that are executed in order: (1) \texttt{analyzeNode}, which records relevant information for each node recursively, (2) \texttt{setInitCoord}, which sets initial coordinates to each node recursively, and (3) \texttt{fixCoord}, which fixes coordinates of nodes so that there are no nodes with same location.
 
 \subsection{Function \texttt{analyzeNode}}
-The main input of the algorithm is any data with a structure of rooted tree. Note that nodes in the input data must be \textit{labelled}. What the \texttt{analyzeNode} function mainly does is to perform tree traversal on the data and record the following information:
+The main input \footnote{Throughout this paper, we only mention the `important' inputs. Other inputs are instead mentioned in \texttt{example.py} comments.} of the algorithm is any data with a structure of rooted tree. Note that nodes in the input data must be \textit{labelled}. What the \texttt{analyzeNode} function mainly does is to perform tree traversal on the data and record the following information:
 
 \begin{itemize}
 	\item \texttt{connecNodes} is an array of arrays of natural numbers. An index \texttt{idx} in \texttt{connecNodes[idx]} corresponds to a node (with \texttt{idx = 0} being the root). Now \texttt{connecNodes[idx]} itself is the array of indices that correspond to the \textit{children} of the \texttt{idx} node. If the \texttt{idx} node is a leaf, then \texttt{connecNodes[idx]} is the empty array.
