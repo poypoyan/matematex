@@ -35,7 +35,7 @@ On the other hand, fractals are often viewed as `self-similar' (but should not a
 Since the derivative already captures \textit{tangency}, we can modify this to define \textit{fractal tangency}, and distinguish fractals from `smooth' curves. The following sections just develop a formalization to this idea.
 
 \section{Definitions}
-Let $C_n$ (for $n \ge 2$) be the set of continuous functions $f:[0,1]\rightarrow\mathbb{R}^n$ such that $f(0)=\{0\}^n$, where $\{0\}^n$ is the origin on $\mathbb{R}^n$. Aside from the Cartesian coordinates, we make frequent use of \textit{Hyper-spherical coordinates} (we shorten it as \textit{HSC} here), which are elements of $S_n = \mathbb{R}_{\ge 0} \times [0, 2\pi[^{n-1}$.
+Let $C_n$ (for $n \ge 2$) be the set of continuous functions $f:[0,1]\rightarrow\mathbb{R}^n$ such that $f(0)=(0)^n$, where $(0)^n$ is the origin on $\mathbb{R}^n$. Aside from the Cartesian coordinates, we make frequent use of \textit{Hyper-spherical coordinates} (we shorten it as \textit{HSC} here), which are elements of $S_n = \mathbb{R}_{\ge 0} \times [0, 2\pi[^{n-1}$.
 
 \begin{definition}\label{hsc}
 Let $T_n: S_n \rightarrow \mathbb{R}^n$ (again, for $n \ge 2$) be the transformation from Hyper-spherical coordinates back to Cartesian coordinates such that:
@@ -56,20 +56,20 @@ Prove that $T_n$ is bijective \textit{except at origin} either by explicit const
 \section{Equivalence Relation}
 Now we can define the main concept to distinguish the rough from the smooth:
 \begin{definition}\label{equiv}
-Two continuous paths to the origin $f, g \in C_n$ have the `same tangency at origin' (we notate as $f \sim_n g$) if there exists a `hyper-rotation' $r = (1, \theta_1, \ldots, \theta_{n-1}) \in S_n$ such that $$\lim_{x\rightarrow 0^{+}} \frac{r \cdot T_n^{-1}(f(x))}{T_n^{-1}(g(x))} = (1, \{0\}^{n-1}).$$
+Two continuous paths to the origin $f, g \in C_n$ have the `same tangency at origin' (we notate as $f \sim_n g$) if there exists a `hyper-rotation' $r = (1, \theta_1, \ldots, \theta_{n-1}) \in S_n$ such that $$\lim_{x\rightarrow 0^{+}} \frac{r \cdot T_n^{-1}(f(x))}{T_n^{-1}(g(x))} = (1, (0)^{n-1}).$$
 \end{definition}
 \begin{theorem}
 $\sim_n$ is an equivalence relation on $C_n$.
 \end{theorem}
 \begin{proof}
-For reflexivity, the $r$ for $f \sim_n f$ would be $(1, \{0\}^{n-1})$. For symmetry, given the $r$ for $f \sim_n g$, the $r'$ for $g \sim_n f$ would be $(1, \{0\}^{n-1})/r$. Lastly for transitivity, given the $r$ for $f \sim_n g$ and $r'$ for $g \sim_n h$, the $r''$ for $f \sim_n h$ would be $r \cdot r'$.
+For reflexivity, the $r$ for $f \sim_n f$ would be $(1, (0)^{n-1})$. For symmetry, given the $r$ for $f \sim_n g$, the $r'$ for $g \sim_n f$ would be $(1, (0)^{n-1})/r$. Lastly for transitivity, given the $r$ for $f \sim_n g$ and $r'$ for $g \sim_n h$, the $r''$ for $f \sim_n h$ would be $r \cdot r'$.
 \end{proof}
 \begin{corollary}
 $\sim_n$ partitions $C_n$ into the set of equivalence classes $C_n / \sim_n$.
 \end{corollary}
 One such class is the class $L_n$ of `smooth' paths to a point, or more informatively, the class of paths with the \textit{tangent line} at origin.
 \begin{definition}
-For a continuous path to the origin $f \in C_n$, $f \in L_n$ iff $f \sim_n (x, \{0\}^{n-1})$.
+For a continuous path to the origin $f \in C_n$, $f \in L_n$ iff $f \sim_n (x, (0)^{n-1})$.
 \end{definition}
 Now we can finally distinguish `fractals', and define the title of this note:
 \begin{definition}
