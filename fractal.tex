@@ -24,34 +24,36 @@
 \maketitle
 
 \begin{abstract}
-Fractals are fascinating objects, but are still considered as `pathological' because most of the time, analytical techniques do not work on those. For example, the well-known ``inscribed square problem" is still unsolved for most fractal-like curves \cite{square}. In this short note we attempt to add something else to say to fractals by carefully distinguishing them from `smooth' curves. For now, restrict the study to the continuum, but we provide some ideas for generalization to other sets.
+Fractals are fascinating objects, but are still considered as `pathological' because most of the time, analytical techniques do not work on those. For example, the well-known ``inscribed square problem" is still unsolved for most fractal-like curves \cite{square}. In this short note we attempt to add something else to say to fractals by carefully distinguishing them from `smooth' curves. For now, this study is restricted to the continuum, but we provide some ideas for generalization to other sets.
 \end{abstract}
 
 \section{Intuition}
-For a start, paths to a point are enough to determine `fractality'. For example, we can say that a surface is `fractal' if a path passing through a point inside that surface is fractal. When restricted to continuous curves in continuum ($\mathbb{R}^n$), fractals can be thought of as exactly the nowhere differentiable functions. We somewhat follow that line of thought, but there is something to say about differentiation: that the derivative is the slope of the \textit{tangent line}. This means that for differentiable curves, the curve will eventually look like a line when `zoomed in' to a point.
+For a start, paths to a point are enough to determine `fractality'. For example, we can say that a surface is `fractal' if a path passing through a point inside that surface is fractal. When restricted to continuous curves in the continuum ($\mathbb{R}^n$), fractals can be thought of as exactly the nowhere differentiable functions. We somewhat follow that line of thought, but please remember a definition of the derivative: that it is the slope of the \textit{tangent line}. This means that differentiable curves will eventually look like a straight line when `zoomed in' to a point.
 
-On the other hand, fractals are often viewed as `self-similar' (but should not always be \cite{3b1b}!) when zoomed in to a point. Now observe that a line looks like itself when zoomed in. Thus a line is self-similar. In a sense, the line is to fractals as 0 is to positive natural numbers!
+On the other hand, fractals are often viewed as `self-similar' (although it should not always be \cite{3b1b}!). Now observe that a straight line looks like itself when zoomed in. Thus, straight line is self-similar. In a sense, the straight line is to fractals as 0 is to positive natural numbers!
 
 Since the derivative already captures \textit{tangency}, we can modify this to define \textit{fractal tangency}, and distinguish fractals from `smooth' curves. The following sections just develop a formalization to this idea.
 
 \section{Definitions}
-Let $C_n$ (for $n \ge 2$) be the set of continuous functions $f:[0,1]\rightarrow\mathbb{R}^n$ such that $f(0)=(0)^n$, where $(0)^n$ is the origin on $\mathbb{R}^n$. Aside from the Cartesian coordinates, we make frequent use of \textit{Hyper-spherical coordinates} (we shorten it as \textit{HSC} here), which are elements of $S_n = \mathbb{R}_{\ge 0} \times [0, 2\pi[^{n-1}$.
+Let $C_n$ (for $n \ge 1$) be the set of all continuous functions $f:[0,1]\rightarrow\mathbb{R}^n$ such that $f(0)=(0)^n$ and $f(x) \ne (0)^n, \forall x \ne 0$, where $(0)^n$ is the origin on $\mathbb{R}^n$. Aside from the Cartesian coordinates, we make use of a variant of \textit{Hyper-spherical coordinates} (we shorten it as \textit{HSC} here). Let the set of HSCs be $S_n = \mathbb{R} \times [0, \pi]^{n-1}$ ($S_1 = \mathbb{R}$).
 
 \begin{definition}\label{hsc}
-Let $T_n: S_n \rightarrow \mathbb{R}^n$ (again, for $n \ge 2$) be the transformation from Hyper-spherical coordinates back to Cartesian coordinates such that:
+Let $T_n: S_n \rightarrow \mathbb{R}^n$ (again, for $n \ge 1$) be the transformation from Hyper-spherical coordinates back to Cartesian coordinates such that:
 \begin{itemize}
-	\item $T_2(r, \theta) = (r \cos{\theta}, r \sin{\theta})$.
-	\item $T_{n+1}(r, \theta_1, \ldots, \theta_n) = (T_n(r,  \theta_1, \ldots, \theta_{n-1}) \cos{\theta_n}, r \sin{\theta_n})$.
+	\item $T_1(r) = r$.
+	\item $T_{n+1}(r, \theta_1, \ldots, \theta_n) = ( \sin{\theta_n} \cdot T_n(r, \theta_1, \ldots, \theta_{n-1}), |r| \cos{\theta_n})$.
 \end{itemize}
 \end{definition}
-
 \begin{exercise}[aka author is lazy]
 Prove that $T_n$ is bijective \textit{except at origin} either by explicit construction of $T_n^{-1}$, or by showing surjection and injection. Please utilize induction if possible.
 \end{exercise}
-
 \begin{definition}
-\textbf{Multiplication on HSC} is the binary operation $\cdot: S_n \times S_n \rightarrow S_n$ such that $(r, \theta_1, \ldots, \theta_{n-1}) \cdot (s, \phi_1, \ldots, \phi_{n-1}) = (rs, \theta_1 + \phi_1, \ldots, \theta_{n-1} + \phi_{n-1})$. Similarly, \textbf{Division on HSC} is the binary operation $/: S_n \times S_n \rightarrow S_n$ such that $(r, \theta_1, \ldots, \theta_{n-1}) / (s, \phi_1, \ldots, \phi_{n-1}) = (r/s, \theta_1 - \phi_1, \ldots, \theta_{n-1} - \phi_{n-1})$.
+\textbf{Multiplication on HSC} is the binary operation $\cdot: S_n \times S_n \rightarrow S_n$ such that $$(r, \theta_1, \ldots, \theta_{n-1}) \cdot (s, \phi_1, \ldots, \phi_{n-1}) = (rs, \pi - |\pi - (\theta_1 + \phi_1)|, \ldots, \pi - |\pi - (\theta_{n-1} + \phi_{n-1})|).$$
 \end{definition}
+\begin{definition}
+\textbf{Division on HSC} is the binary operation $/: S_n \times S_n \rightarrow S_n$ such that $$(r, \theta_1, \ldots, \theta_{n-1}) / (s, \phi_1, \ldots, \phi_{n-1}) = (r/s, |\theta_1 - \phi_1|, \ldots, |\theta_{n-1} - \phi_{n-1}|).$$
+\end{definition}
+Notice that there are something more on the addition and subtraction of angles. The idea is that if the sum/difference of angles is outside of $[0,\pi]$, we put it back to $[0,\pi]$ by `remeasuring' it from angle $0$.
 
 \section{Equivalence Relation}
 Now we can define the main concept to distinguish the rough from the smooth:
@@ -79,8 +81,7 @@ A continuous path to the origin $f \in C_n$  has \textbf{fractal tangency} at or
 \section{Other Ideas}
 Here are some other ideas/comments for further study of the concepts outlined in previous sections:
 \begin{itemize}
-	\item The limit in Definition \ref{equiv} can be simplified to $$\lim_{x \rightarrow 0^+}\frac{T_n^{-1}(f(x))}{T_n^{-1}(g(x))} = (1, \theta_1, \ldots, \theta_{n-1}).$$ This suggests a weakening of the equivalence relation: the limit should now be $(r, \theta_1, \ldots, \theta_{n-1})$ for any $r > 0$. However, at the time of writing, we have no idea what this \textit{means}.
-	\item The dimension $n=1$ is omitted because $\mathbb{R}^1=\mathbb{R}$ doesn't exactly fit in Definition \ref{hsc} (maybe $S_1 = \mathbb{R}_{\ge 0} \times \{+, -\}$?). Nevertheless, defining $\sim_1$ is simpler because the supposed `multiplication/division on HSC' is just the usual multiplication and division on $\mathbb{R}$, respectively.
+	\item The limit in Definition \ref{equiv} can be simplified to $$\lim_{x \rightarrow 0^+}\frac{T_n^{-1}(f(x))}{T_n^{-1}(g(x))} = (1, \theta_1, \ldots, \theta_{n-1}).$$ This suggests a weakening of the equivalence relation: the limit should now be $(r, \theta_1, \ldots, \theta_{n-1})$ for any $r \ne 0$. However, at the time of writing, we do not have a good `geometric' interpretation for this.
 	\item Of course there are fractals beyond $C_n$ like the well-known Sierpiński carpet! The first idea is that paths on \textit{sets} can be defined as $f:[0,1] \rightarrow 2$. Fortunately there are no notions of continuity, HSC, and hyper-rotation anymore. Then the next idea is to modify the $\epsilon$ part of the $\epsilon$-$\delta$ definition: instead of $|f(x)-L|<\epsilon$, we simply have $f(x) \oplus L = 0$, where $\oplus$ is the XOR operation. Now the only perfectly `smooth` paths are $f_0(x)=0$ and $f_1(x)=1$, for all $x\in[0,1]$. The last idea is to define a suitable `multiplication' and `division': maybe the XOR operation can also be used for that. Hopefully we can now define the analogue for Definition \ref{equiv}. These ideas should generalize to other sets aside from $\mathbb{R}^n$ and $2$.
 \end{itemize}
 

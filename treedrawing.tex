@@ -97,9 +97,59 @@ The main input \footnote{Throughout this paper, we only mention the `important' 
 \end{itemize}
 
 \subsection{Function \texttt{setInitCoord}}
-[To be continued.]
+As the name says, this function sets initial coordinates for each node. The root's coordinate is always set to $(0,0)$; the major nodes are always set to coordinates of upright square lattice (see Figures \ref{lattice} and \ref{setinitcoord}). Aside from the above outputs of \texttt{analyzeNode} except \texttt{labelDict}, the relevant inputs are \texttt{outDir}, the direction of `growth' of rooted tree, and \texttt{dist}, the distance between consecutive horizontal/vertical points in the upright square lattice. Without loss of generality, we set \texttt{outDir = `D'} (downward direction) and \texttt{dist = 1.0} for the following discussion.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}
+		\foreach \i in {0,...,4}
+		\foreach \j in {0,...,4}
+		\node[circle, minimum width = 4pt, inner sep = 0pt, fill = red] at (\i * 0.5 cm, \j * 0.5 cm) {};
+	\end{tikzpicture}
+	\caption{Upright square lattice. The middlemost point would be the origin.}
+	\label{lattice}
+\end{figure}
+
+For each major node $x$ with one child node, minor nodes are traversed until encountering another major node $y$. The coordinate for $y$ is set to one \texttt{dist} directly \textit{below} (since \texttt{outDir = `D'}) the coordinate of $x$. On the other hand, the coordinates of minor nodes between $x$ and $y$ are `squeezed' between the coordinates of $x$ and $y$ at equal distance to each other. Now $y$ either has no child or has multiple children. The former means unwinding the recursion. For the latter, the  y-coordinate of $y$'s children is one \texttt{dist} below $y$. Now the x-coordinate of the children depends on their weights: the child with highest weight is placed directly below $y$, then the child with next highest weight is placed one \texttt{dist} away from the closest child. The placement of children swings (e.g. center, left, right, left, $\ldots$) and goes \textit{away} from the child with highest weight. All of this is visualized in Figure \ref{setinitcoord}.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[nodes = {draw, circle, minimum width = 4pt, inner sep = 0pt}]
+		\draw[-, thick = 2pt] (0 cm, 0 cm) -- (0 cm, -2 cm);
+		\draw[-, thick = 2pt] (0 cm, -1 cm) -- (-1 cm, -2 cm);
+		\draw[-, thick = 2pt] (0 cm, -1 cm) -- (1 cm, -2 cm);
+		\draw[-, thick = 2pt] (0 cm, -1 cm) -- (-2 cm, -2 cm);
+		\draw[-, thick = 2pt] (0 cm, -1 cm) -- (2 cm, -2 cm);
+		\node[color = red, fill = red] at (0 cm, 0 cm) {};
+		\node[fill = black] at (0 cm, -0.333 cm) {};
+		\node[fill = black] at (0 cm, -0.667 cm) {};
+		\node[color = red, fill = red] at (0 cm, -1 cm) {};
+		\node[color = red, fill = red] at (0 cm, -2 cm) {};
+		\node[color = red, fill = red] at (-1 cm, -2 cm) {};
+		\node[color = red, fill = red] at (1 cm, -2 cm) {};
+		\node[color = red, fill = red] at (-2 cm, -2 cm) {};
+		\node[color = red, fill = red] at (2 cm, -2 cm) {};
+		\node[draw = none] at (0.2 cm, 0.1 cm) {$x$};
+		\node[draw = none] at (0.2 cm, -0.9 cm) {$y$};
+		\node[draw = none] at (0 cm, -2.4 cm) {4};
+		\node[draw = none] at (-1 cm, -2.4 cm) {3};
+		\node[draw = none] at (1 cm, -2.4 cm) {2};
+		\node[draw = none] at (-2 cm, -2.4 cm) {1};
+		\node[draw = none] at (2 cm, -2.4 cm) {0};
+	\end{tikzpicture}
+	\caption{Initial coordinates; branches are drawn for clarity. Major nodes are red and minor nodes are black. Example weights of bottom nodes are also indicated.}
+	\label{setinitcoord}
+\end{figure}
+
+The reasoning behind placement of children is aesthetic: the central path from root should have the most major nodes, and the sub-rooted trees that branch away from the central path should be kept minimal.
+
 \subsection{Function \texttt{fixCoord}}
-[To be continued.]
+The problem with the previous function is that several major nodes will have the same coordinates. This is what \texttt{fixCoord} fixes. The idea is to list coordinates of each node one-by-one (listed in \texttt{subList}) until a coordinate is already in \texttt{subList}, implying that a duplicate is found.
+
+Let's say that nodes $x$ and $y$ ($x \ne y$) have the same coordinate. Using \texttt{majorNodes}, the two major nodes that have the same parent and splits the path from root to $x$ and the path from root to $y$ are determined. The indices of that major node for $x$ and for $y$ are stored at \texttt{splitNodeA} and \texttt{splitNodeB} (let's say respectively). If for example \texttt{weight[splitNodeA] > weight[splitNodeB]}, then the whole sub-rooted tree by \texttt{splitNodeB} must move \textit{away} from the central path from root (and vice versa). This also means that the coordinate of $y$ must move. How many \texttt{dist} to move? The whole sub-rooted tree by \texttt{splitNodeB} must move away until the coordinate of $y$ is not equal to the coordinates of any children of the parent of $x$.
+
+After the move, \texttt{subList} is updated properly and the listing continues until all nodes are considered. Since there are nodes with changed coordinates, \texttt{subList} is cleared and restart the listing of coordinates. On the other hand, if no duplicate coordinate is found for all major nodes, then the function is done.
+
 \section{Proof of Correctness}
 [To be continued.]
 
