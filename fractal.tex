@@ -48,12 +48,12 @@ Let $T_n: S_n \rightarrow \mathbb{R}^n$ (again, for $n \ge 1$) be the transforma
 Prove that $T_n$ is bijective \textit{except at origin} either by explicit construction of $T_n^{-1}$, or by showing surjection and injection. Please utilize induction if possible.
 \end{exercise}
 \begin{definition}
-\textbf{Multiplication on HSC} is the binary operation $\cdot: S_n \times S_n \rightarrow S_n$ such that $$(r, \theta_1, \ldots, \theta_{n-1}) \cdot (s, \phi_1, \ldots, \phi_{n-1}) = (rs, \pi - |\pi - (\theta_1 + \phi_1)|, \ldots, \pi - |\pi - (\theta_{n-1} + \phi_{n-1})|).$$
+\textbf{Quasi-multiplication on HSC} is the binary operation $\cdot: S_n \times S_n \rightarrow S_n$ such that $$(r, \theta_1, \ldots, \theta_{n-1}) \cdot (s, \phi_1, \ldots, \phi_{n-1}) = (rs, \pi - |\pi - (\theta_1 + \phi_1)|, \ldots, \pi - |\pi - (\theta_{n-1} + \phi_{n-1})|).$$
 \end{definition}
 \begin{definition}
-\textbf{Division on HSC} is the binary operation $/: S_n \times S_n \rightarrow S_n$ such that $$(r, \theta_1, \ldots, \theta_{n-1}) / (s, \phi_1, \ldots, \phi_{n-1}) = (r/s, |\theta_1 - \phi_1|, \ldots, |\theta_{n-1} - \phi_{n-1}|).$$
+\textbf{Quasi-division on HSC} is the binary operation $/: S_n \times S_n \rightarrow S_n$ such that $$(r, \theta_1, \ldots, \theta_{n-1}) / (s, \phi_1, \ldots, \phi_{n-1}) = (r/s, |\theta_1 - \phi_1|, \ldots, |\theta_{n-1} - \phi_{n-1}|).$$
 \end{definition}
-Notice that there are something more on the addition and subtraction of angles. The idea is that if the sum/difference of angles is outside of $[0,\pi]$, we put it back to $[0,\pi]$ by `remeasuring' it from angle $0$.
+Notice the operations on angles. The idea is that if the sum/difference of angles is outside of $[0,\pi]$, we put it back to $[0,\pi]$ by `remeasuring' it from angle $0$.
 
 \section{Equivalence Relation}
 Now we can define the main concept to distinguish the rough from the smooth:
@@ -82,7 +82,7 @@ A continuous path to the origin $f \in C_n$  has \textbf{fractal tangency} at or
 Here are some other ideas/comments for further study of the concepts outlined in previous sections:
 \begin{itemize}
 	\item The limit in Definition \ref{equiv} can be simplified to $$\lim_{x \rightarrow 0^+}\frac{T_n^{-1}(f(x))}{T_n^{-1}(g(x))} = (1, \theta_1, \ldots, \theta_{n-1}).$$ This suggests a weakening of the equivalence relation: the limit should now be $(r, \theta_1, \ldots, \theta_{n-1})$ for any $r \ne 0$. However, at the time of writing, we do not have a good `geometric' interpretation for this.
-	\item Of course there are fractals beyond $C_n$ like the well-known Sierpiński carpet! The first idea is that paths on \textit{sets} can be defined as $f:[0,1] \rightarrow 2$. Fortunately there are no notions of continuity, HSC, and hyper-rotation anymore. Then the next idea is to modify the $\epsilon$ part of the $\epsilon$-$\delta$ definition: instead of $|f(x)-L|<\epsilon$, we simply have $f(x) \oplus L = 0$, where $\oplus$ is the XOR operation. Now the only perfectly `smooth` paths are $f_0(x)=0$ and $f_1(x)=1$, for all $x\in[0,1]$. The last idea is to define a suitable `multiplication' and `division': maybe the XOR operation can also be used for that. Hopefully we can now define the analogue for Definition \ref{equiv}. These ideas should generalize to other sets aside from $\mathbb{R}^n$ and $2$.
+	\item Of course there are fractals beyond $C_n$ like the well-known Sierpiński carpet! The first idea is that paths on \textit{sets} can be defined as $f:[0,1] \rightarrow 2$. Fortunately there are no notions of continuity, HSC, and hyper-rotation anymore. Then the next idea is to modify the $\epsilon$ part of the $\epsilon$-$\delta$ definition: instead of $|f(x)-L|<\epsilon$, we simply have $f(x) \oplus L = 0$, where $\oplus$ is the XOR operation. Now the only perfectly `smooth` paths are $f_0(x)=0$ and $f_1(x)=1$, for all $x\in[0,1]$. The last idea is to define a suitable (quasi-)multiplication and (quasi-)division: maybe the XOR operation can also be used for that. Hopefully we can now define the analogue for Definition \ref{equiv}. These ideas should generalize to other sets aside from $\mathbb{R}^n$ and $2$.
 \end{itemize}
 
 \bibliographystyle{plain}
