@@ -65,15 +65,15 @@ To aid in understanding the concepts, an example rooted tree is provided in Figu
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}[nodes = {draw, circle}]
-		\node [red] {8} [sibling distance = 2cm, level distance = 1cm]
+		\node [red] {8} [sibling distance = 1cm, level distance = 1cm]
 		child {node {2}
 			child {node {0}
 				child {node {1}}
 			}
 		}
 		child {node {4}
-			child {node {3}
-				child {node {1}}
+			child {node {3} [sibling distance = 2cm]
+				child {node [xshift = 1cm] {1}}
 				child {node {1}}
 			}
 		}
