@@ -6,4 +6,4 @@ This is a collection of LaTeX write-ups for mathematical ideas that interest me 
 ### Titles
 * [The Diagonal Argument, Clarified and Generalized](files/diagonal.pdf)
 * [Fractal Tangency](files/fractal.pdf)
-* [Description and Proof of Correctness of `treedrawing`](files/treedrawing.pdf)
+* [Description of `treedrawing`](files/treedrawing.pdf)

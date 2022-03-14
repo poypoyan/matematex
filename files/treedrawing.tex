@@ -16,7 +16,7 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
-\title{Description and Proof of Correctness of \texttt{treedrawing}}
+\title{Description of \texttt{treedrawing}}
 \author{poypoyan}
 \date{\petsa\today}
 
@@ -25,7 +25,7 @@
 \maketitle
 
 \begin{abstract}
-This note contains an overview of my Github repo \texttt{treedrawing} \cite{treedrawing}, which is a naive algorithm that neatly draws rooted trees. Then a proof of correctness of the algorithm is presented.
+This note contains an overview of my Github repo \texttt{treedrawing} \cite{treedrawing}, which is a naive algorithm that neatly draws rooted trees.
 \end{abstract}
 
 \section{Definitions}
@@ -97,7 +97,7 @@ The main input \footnote{Throughout this paper, we only mention the `important' 
 \end{itemize}
 
 \subsection{Function \texttt{setInitCoord}}
-As the name says, this function sets initial coordinates for each node. The root's coordinate is always set to $(0,0)$; the major nodes are always set to coordinates of upright square lattice (see Figures \ref{lattice} and \ref{setinitcoord}). Aside from the above outputs of \texttt{analyzeNode} except \texttt{labelDict}, the relevant inputs are \texttt{outDir}, the direction of `growth' of rooted tree, and \texttt{dist}, the distance between consecutive horizontal/vertical points in the upright square lattice. Without loss of generality, we set \texttt{outDir = `D'} (downward direction) for the following discussion.
+As the name says, this function sets initial coordinates for each node. These coordinates are stored in \texttt{coordNodes}. The root's coordinate is always set to $(0,0)$. The major nodes are always set to coordinates of upright square lattice (see Figures \ref{lattice} and \ref{setinitcoord}). We let \texttt{dist} the distance between consecutive horizontal/vertical points in the upright square lattice; it is hard-coded to $1.0$. Aside from the above outputs of \texttt{analyzeNode} except \texttt{labelDict}, the other relevant input is \texttt{outDir}, the direction of `growth' of rooted tree. For the following discussion, we set \texttt{outDir = `D'} (downward direction).
 
 \begin{figure}[htbp]
 	\centering
@@ -144,47 +144,45 @@ For each major node $x$ with one child node, minor nodes are traversed until enc
 The reasoning behind placement of children is aesthetics: the central path from root should have the most major nodes, and the sub-rooted trees that branch away from the central path should be minimal.
 
 \subsection{Function \texttt{fixCoord}}
-The problem with the previous function is that several major nodes will have the same coordinates. This is what \texttt{fixCoord} fixes. The idea is to add coordinates of each node one-by-one in the set \texttt{subSet} until a coordinate to add is already in \texttt{subSet}, implying that a duplicate is found.
+The problem with the previous function is that several major nodes will have the same coordinates. This is what \texttt{fixCoord} fixes. For each major node $x$, let $y$ be first index in \texttt{coordNodes} such that \texttt{coordNodes[x] = coordNodes[y]}. If $x \ne y$, then a duplicate coordinate is found.
 
-Let's say that nodes $x$ and $y$ ($x \ne y$) have the same coordinate. Using \texttt{majorNodes}, the two major nodes that have the same parent and splits the path from root to $x$ and the path from root to $y$ are determined. The indices of that major node for $x$ and for $y$ are stored at \texttt{splitNodeA} and \texttt{splitNodeB} (let's say respectively). If for example \texttt{weight[splitNodeA] > weight[splitNodeB]}, then the whole sub-rooted tree by \texttt{splitNodeB} must move \textit{away} from the central path from root (and vice versa). This also means that the coordinate of $y$ must move. How many \texttt{dist} to move? The whole sub-rooted tree by \texttt{splitNodeB} must move away until the coordinate of $y$ is not equal to the coordinates of $x$ and all siblings of $x$.
+Using \texttt{majorNodes}, the two major nodes that have the same parent and splits the path from root to $x$ and the path from root to $y$ are determined. The indices of that major node for $x$ and for $y$ are stored at \texttt{splitNodeA} and \texttt{splitNodeB} (let's say respectively). If for example \texttt{weight[splitNodeA] > weight[splitNodeB]}, then the whole sub-rooted tree by \texttt{splitNodeB} must move \textit{away} from the central path from root (and vice versa). This also means that the coordinate of $y$ must move. How many \texttt{dist} to move? The whole sub-rooted tree by \texttt{splitNodeB} must move away until the coordinate of $y$ is not equal to the coordinates of $x$ and all siblings of $x$.
 
-After the movement, \texttt{subSet} is cleared and the one-by-one adding of coordinates restarts. On the other hand, if no duplicate coordinate is found for all major nodes, then the function is done.
-\\
-\\
-The main output of the algorithm is the final coordinates of each node. On the other hand, the drawing of branches is actually not an output! This means that the drawing of branches is a separate code to be made by programmer, although I have the simple `straight line' branches (as seen in Figure \ref{setinitcoord}) in mind.
+After the movement, the next $x$ is checked. Looping through major nodes is continued until no duplicate coordinate is found, which means the function is done.
 
-\section{Proof of Correctness}
-We prove that if the drawing of the branch is straight line, then no two branches \textit{intersect}. Visually, this means that the intersection in Figure \ref{interbranch} should \textbf{never} occur in the output of the algorithm.
+\section{Notes for Programmer}
+The main output of the algorithm is the final coordinates of each node, \texttt{coordNodes}. On the other hand, the drawing of branches is actually not an output! This means that the drawing of branches must be done in a separate code/program, although I have the simple `straight line' branches (as seen in Figures \ref{setinitcoord} and \ref{interbranch}) in mind.
+
+Since the coordinate of root node and \texttt{dist} are hard-coded to $(0,0)$ and $1.0$, respectively, one can `customize' the coordinates in the following manner: $$\mathbf{r} + s * \texttt{coordNodes[i]}$$
+for all nodes $i$, where $\mathbf{r}$ is the actual root node coordinate and $s$ is the scalar.
+
+Lastly, intersecting branches in a manner like in Figure \ref{interbranch} may occur.
 
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}[nodes = {draw, circle, minimum width = 4pt, inner sep = 0pt}]
-		% subtree 1
+		% sub-rooted tree 1
 		\draw[-, thick = 2pt] (-2 cm, 0 cm) -- (-2 cm, -1 cm);
 		\draw[-, thick = 2pt] (-2 cm, 0 cm) -- (-3 cm, -1 cm);
 		\draw[-, thick = 2pt] (-2 cm, 0 cm) -- (-1 cm, -1 cm);
-		\draw[-, thick = 2pt] (-2 cm, 0 cm) -- (1 cm, -1 cm);
+		\draw[-, thick = 2pt] (-2 cm, 0 cm) -- (3 cm, -1 cm);
 		\node[color = red, fill = red] at (-2 cm, 0 cm) {};
 		\node[color = red, fill = red] at (-2 cm, -1 cm) {};
 		\node[color = red, fill = red] at (-3 cm, -1 cm) {};
 		\node[color = red, fill = red] at (-1 cm, -1 cm) {};
 		\node[color = red, fill = red] at (1 cm, -1 cm) {};
-		% subtree 2
-		\draw[-, thick = 2pt] (2 cm, 0 cm) -- (0 cm, -1 cm);
-		\draw[-, thick = 2pt] (2 cm, 0 cm) -- (2 cm, -1 cm);
-		\draw[-, thick = 2pt] (2 cm, 0 cm) -- (3 cm, -1 cm);
-		\node[color = red, fill = red] at (2 cm, 0 cm) {};
+		% sub-rooted tree 2
+		\draw[-, thick = 2pt] (1 cm, 0 cm) -- (0 cm, -1 cm);
+		\draw[-, thick = 2pt] (1 cm, 0 cm) -- (1 cm, -1 cm);
+		\draw[-, thick = 2pt] (1 cm, 0 cm) -- (2 cm, -1 cm);
+		\node[color = red, fill = red] at (1 cm, 0 cm) {};
 		\node[color = red, fill = red] at (0 cm, -1 cm) {};
 		\node[color = red, fill = red] at (2 cm, -1 cm) {};
 		\node[color = red, fill = red] at (3 cm, -1 cm) {};
 	\end{tikzpicture}
-	\caption{Intersecting branches.}
+	\caption{The right sub-rooted tree is sandwiched between two children of the left sub-rooted tree.}
 	\label{interbranch}
 \end{figure}
-
-\begin{proof}
-To be continued.
-\end{proof}
 
 \bibliographystyle{plain}
 \bibliography{treedrawing}
