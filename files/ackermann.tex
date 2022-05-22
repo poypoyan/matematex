@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+
+\usepackage{datetime}
+\newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\title{Ackermann Set Theory and ZF}
+\author{poypoyan}
+\date{\petsa\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Zermelo-Fraenkel Set Theory (ZF) is considered to be the ``standard" set theory for foundation of mathematics. Ackermann proposed an alternative set theory in \cite{ackermann}, which is now called \textit{Ackermann Set Theory} (AST). An interesting well-known result is that ZF and a little modified AST is somewhat ``the same." In this note we present that variant of AST, the equivalence result, and its significance.
+\end{abstract}
+
+\section{That Variant of AST}
+We will now describe here a variant of Ackermann Set Theory we denote as $\textsf{A*}$, which has differences with the original in \cite{ackermann} in that there is one axiom removed and one axiom inserted. $\textsf{A*}$ is formulated in first-order logic with equality and with a constant $V$ which is interpreted as the set universe, and a binary relation $\in$ which is interpreted as the usual membership relation. Here are the axioms of $\textsf{A*}$:
+\begin{enumerate}
+	\item (Axiom of Extensionality) $$\forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y.$$
+	\item (Ackermann's Schema) Let $\phi(y, z_1, \ldots, z_n)$ be any first-order formula without $V$ and $x$ as free variables. If $x_1, \ldots, x_n \in V$, then $$\forall y(\phi(y, z_1, \ldots, z_n) \rightarrow y \in V) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, z_1, \ldots, z_n))).$$
+	\item (Strong Completeness Axioms for $V$) $$(x \in y \vee x \subseteq y) \wedge y \in V \rightarrow x \in V.$$ where $\subseteq$ is the usual subset relation, defined as $x \subseteq y \leftrightarrow \forall z(z \in x \rightarrow z \in y).$
+	\item (Axiom of Regularity) $$x \in V \wedge \exists y(y \in x) \rightarrow \exists y(y \in x \wedge \forall z(z \in x \rightarrow \neg z \in y)).$$
+\end{enumerate}
+The one axiom removed is called the \textit{Class Construction Axiom Schema} which is just the Axiom Schema of Separation for $V$, and the one axiom inserted is the Axiom of Regularity above.
+
+\section{The Equivalence Result, and its Significance}
+[WIP] \cite{levy} \cite{reinhardt}
+\\\\
+\noindent The main reason for writing this whole note is because this result basically means that for \textit{well-founded} sets, all \textit{unique} set constructions that are
+\begin{enumerate}
+	\item definable as a first-order sentence (hence, are ``finite''), and
+	\item ``universe-agnostic'' (since they do not mention $V$),
+\end{enumerate}
+are \textit{exactly} the ones definable using ZF! Informally, for unique set constructions, $$\text{``Nice and Finite''} = \text{Constructed using ZF}.$$
+
+Let's consider the Axiom of Choice. [WIP]
+\section{Proofs}
+[WIP; will take a long time because I am still a beginner in Set Theory.]
+
+\bibliographystyle{plain}
+\bibliography{ackermann}
+\end{document}
