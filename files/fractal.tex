@@ -24,11 +24,11 @@
 \maketitle
 
 \begin{abstract}
-Fractals are fascinating objects, but are still considered as `pathological' because most of the time, analytical techniques do not work on those. For example, the well-known ``inscribed square problem" is still unsolved for most fractal-like curves \cite{square}. In this short note we attempt to add something else to say to fractals by carefully distinguishing them from `smooth' curves. For now, this study is restricted to the continuum, but we provide some ideas for generalization to other sets.
+Fractals are fascinating objects, but are still considered as pathological because most of the time, analytical techniques do not work on those. For example, the well-known ``inscribed square problem" is still unsolved for most fractal-like curves \cite{square}. In this short note we attempt to add something else to say to fractals by carefully distinguishing them from `smooth' curves. For now, this study is restricted to the continuum, but we provide some ideas for generalization to other sets.
 \end{abstract}
 
 \section{Intuition}
-For a start, paths to a point are enough to determine `fractality'. For example, we can say that a surface is `fractal' if a path passing through a point inside that surface is fractal. When restricted to continuous curves in the continuum ($\mathbb{R}^n$), fractals can be thought of as exactly the nowhere differentiable functions. We somewhat follow that line of thought, but please remember a definition of the derivative: that it is the slope of the \textit{tangent line}. This means that differentiable curves will eventually look like a straight line when `zoomed in' to a point.
+For a start, paths to a point are enough to determine fractality. For example, we can say that a surface is `fractal' if a path passing through a point inside that surface is fractal. When restricted to continuous curves in the continuum ($\mathbb{R}^n$), fractals can be thought of as exactly the nowhere differentiable functions. We somewhat follow that line of thought, but please remember a definition of the derivative: that it is the slope of the \textit{tangent line}. This means that differentiable curves will eventually look like a straight line when `zoomed in' to a point.
 
 On the other hand, fractals are often viewed as `self-similar' (although it should not always be \cite{3b1b}!). Now observe that a straight line looks like itself when zoomed in. Thus, straight line is self-similar. In a sense, the straight line is to fractals as 0 is to positive natural numbers!
 
@@ -73,7 +73,7 @@ One such class is the class $L_n$ of `smooth' paths to a point, or more informat
 \begin{definition}
 For a continuous path to the origin $f \in C_n$, $f \in L_n$ iff $f \sim_n (x, (0)^{n-1})$.
 \end{definition}
-Now we can finally distinguish `fractals', and define the title of this note:
+Now we can finally distinguish fractals, and define the title of this note:
 \begin{definition}
 A continuous path to the origin $f \in C_n$  has \textbf{fractal tangency} at origin iff $f \not\in L_n$.
 \end{definition}
@@ -82,7 +82,7 @@ A continuous path to the origin $f \in C_n$  has \textbf{fractal tangency} at or
 Here are some other ideas/comments for further study of the concepts outlined in previous sections:
 \begin{itemize}
 	\item The limit in Definition \ref{equiv} can be simplified to $$\lim_{x \rightarrow 0^+}\frac{T_n^{-1}(f(x))}{T_n^{-1}(g(x))} = (1, \theta_1, \ldots, \theta_{n-1}).$$ This suggests a weakening of the equivalence relation: the limit should now be $(r, \theta_1, \ldots, \theta_{n-1})$ for any $r \ne 0$. However, at the time of writing, we do not have a good `geometric' interpretation for this.
-	\item Of course there are fractals beyond $C_n$ like the well-known Sierpiński carpet! The first idea is that paths on \textit{sets} can be defined as $f:[0,1] \rightarrow 2$. Fortunately there are no notions of continuity, HSC, and hyper-rotation anymore. Then the next idea is to modify the $\epsilon$ part of the $\epsilon$-$\delta$ definition: instead of $|f(x)-L|<\epsilon$, we simply have $f(x) \oplus L = 0$, where $\oplus$ is the XOR operation. Now the only perfectly `smooth` paths are $f_0(x)=0$ and $f_1(x)=1$, for all $x\in[0,1]$. The last idea is to define a suitable (quasi-)multiplication and (quasi-)division: maybe the XOR operation can also be used for that. Hopefully we can now define the analogue for Definition \ref{equiv}. These ideas should generalize to other sets aside from $\mathbb{R}^n$ and $2$.
+	\item Of course there are fractals beyond $C_n$ like the well-known Sierpiński carpet! The first idea is that paths on \textit{sets} can be defined as $f:[0,1] \rightarrow 2$. Fortunately there are no notions of continuity, HSC, and hyper-rotation anymore. Then the next idea is to modify the $\epsilon$ part of the $\epsilon$-$\delta$ definition: instead of $|f(x)-L|<\epsilon$, we simply have $f(x) \oplus L = 0$, where $\oplus$ is the XOR operation. Now the only perfectly `smooth' paths are $f_0(x)=0$ and $f_1(x)=1$, for all $x\in[0,1]$. The last idea is to define a suitable (quasi-)multiplication and (quasi-)division: maybe the XOR operation can also be used for that. Hopefully we can now define the analogue for Definition \ref{equiv}. These ideas should generalize to other sets aside from $\mathbb{R}^n$ and $2$.
 \end{itemize}
 
 \bibliographystyle{plain}
