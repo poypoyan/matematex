@@ -34,22 +34,36 @@ We will now describe here a variant of Ackermann Set Theory we denote as $\texts
 The one axiom removed is called the \textit{Class Construction Axiom Schema} which is just the Axiom Schema of Separation for $V$, and the one axiom inserted is the Axiom of Regularity above.
 
 \section{The Equivalence Result, and its Significance}
-[WIP] \cite{levy} \cite{reinhardt}
-\\\\
-\noindent The main reason for writing this whole note is because this result basically means that for \textit{well-founded} sets, all \textit{unique} set constructions that are
+Let $\phi^V$ be the \textit{relativization} to $V$ of a formula $\phi$ in first-order logic with $=$ and $\in$, but without $V$. This means that every instance of $\forall x \varphi$ in $\phi$ is replaced by $\forall x (x \in V \rightarrow \varphi)$ in $\phi^V$, and every instance of $\exists x \varphi$ is replaced by $\exists x (x \in V \wedge \varphi)$.
+
+Now the following two theorems make up the equivalence result. See Appendix \ref{proofs} for some proof sketches.
+
+\begin{theorem}[Lévy \cite{levy}]\label{levy-thm}
+	$\emph{\textsf{A*}}\vdash\phi^V \implies \emph{\textsf{ZF}}\vdash\phi$.
+\end{theorem}
+\begin{theorem}[Reinhardt \cite{reinhardt}]\label{reinhardt-thm}
+	$\emph{\textsf{ZF}}\vdash\phi \implies \emph{\textsf{A*}}\vdash\phi^V$.
+\end{theorem}
+
+\noindent The main reason for writing this whole note is because this equivalence result basically means that for \textit{well-founded} sets, all \textit{unique} set constructions that are
 \begin{enumerate}
 	\item definable as a first-order sentence (hence, are ``finite''), and
 	\item ``universe-agnostic'' (since they do not mention $V$),
 \end{enumerate}
-are \textit{exactly} the ones definable using ZF! Informally, for unique well-founded set constructions, $$\text{``Nice and Finite''} = \text{Constructed using ZF}.$$
+are \textit{exactly} the ones definable using ZF! Informally, for unique well-founded set constructions, $$\text{``Nice'' and ``Finite''} = \text{Constructed using ZF}.$$
 
-Let's consider the Axiom of Choice. [WIP]
+Let's consider the Axiom of Choice (AC), a well-known axiom independent to ZF. The sets it constructs are not unique, hence it is said to postulate existence of sets without defining it, unlike other ZF (set construction) axioms \cite[Chapter 5]{jech}. However, if we just permit ``lengths'' of any ordinal to $\phi$ in Ackermann's Schema, AC can now ``produce'' unique sets again! To see this, let $S$ be a set of sets, then an appropriate $\phi$ for AC would simply be $$y = a_0 \vee y = a_1 \vee y = a_2 \vee \ldots$$ where $a_0 \in s_0, a_1 \in s_1, a_2 \in s_2, \ldots$ and $S=\{s_0, s_1, s_2, \ldots\}$. We hope that this gives importance to always remembering while studying infinities that our ``full'' descriptions of objects are always finite.
 
 Lastly, it is this focus on set constructions instead of proper classes that we decided to remove the Class Construction Axiom Schema for our $\textsf{A*}$. Note that the Axiom of Separation immediately follows from Ackermann's Schema by setting $\phi$ to $y \in a \wedge \varphi$ for $a\in V$.
 
-\section{Proofs}
-[WIP; will take a long time because I am not much knowledgeable in Set Theoretic methods.]
+
 
 \bibliographystyle{plain}
 \bibliography{ackermann}
+
+\appendix
+
+\section{Proofs}\label{proofs}
+[WIP; will take a long time because I am not much knowledgeable in Set Theoretic methods.]
+
 \end{document}
