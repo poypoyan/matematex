@@ -153,8 +153,8 @@ After the movement, the next $x$ is checked. Looping through major nodes is cont
 \section{Notes for Programmer}
 The main output of the algorithm is the final coordinates of each node, \texttt{coordNodes}. On the other hand, the drawing of branches is actually not an output! This means that the drawing of branches must be done in a separate code/program, although I have the simple `straight line' branches (as seen in Figures \ref{setinitcoord} and \ref{interbranch}) in mind.
 
-Since the coordinate of root node and \texttt{dist} are hard-coded to $(0,0)$ and $1.0$, respectively, one can `customize' the coordinates in the following manner: $$\mathbf{r} + s * \texttt{coordNodes[i]}$$
-for all nodes $i$, where $\mathbf{r}$ is the actual root node coordinate and $s$ is the scalar.
+Since the coordinate of root node and \texttt{dist} are hard-coded to $(0,0)$ and $1.0$, respectively, one can `customize' the coordinates in the following manner: $$\texttt{r + s * coordNodes[i]}$$
+for all nodes \texttt{i}, where \texttt{r} is the actual root node coordinate and \texttt{s} is a scalar.
 
 Lastly, intersecting branches in a manner like in Figure \ref{interbranch} may occur.
 
