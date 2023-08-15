@@ -4,7 +4,7 @@ This is a collection of LaTeX write-ups for mathematical ideas that interest me 
 **WARNING:** There is no guarantee of correctness. The priority is clarity in writing, but even that is also not guaranteed 😩.
 
 ### Titles
+* [My Pet Set Theory: AST+NWF](files/ackermann.pdf)
 * [The Diagonal Argument, Clarified and Generalized](files/diagonal.pdf)
 * [Fractal Tangency](files/fractal.pdf)
 * [Description of `treedrawing`](files/treedrawing.pdf)
-* [My Pet Set Theory: AST+NWF](files/ackermann.pdf)

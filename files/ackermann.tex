@@ -57,7 +57,7 @@ There are several motivations for the ``design" of the theory.\\
 
 The first motivation is the focus on \textit{set constructions} instead of sets and/or proper classes. Because of this, we decided to:
 \begin{itemize}
-\item Adopt AST in the first place. The Ackermann schema captures the idea that ``natural"/``uncontroversial" set constructions are 1) definable as a first-order sentence (hence, are ``finite''), and 2) ``universe-agnostic'' (since they do not mention $V$). This reminds us while studying infinities that our ``full'' descriptions of objects are always finite.
+\item Adopt AST in the first place. The Ackermann schema captures the idea that ``natural"/``uncontroversial" set constructions are 1) definable as a first-order sentence (hence, are ``finite''), and 2) ``universe-agnostic'' (since those do not mention $V$). This reminds us while studying infinities that our ``full'' descriptions of objects are always finite.
 
 On the contrary, consider the Axiom of Choice (AC), a well-known axiom independent to ZF. The sets it constructs are not unique, hence it is said to postulate existence of sets without defining it, unlike other ZF (set construction) axioms \cite[Chapter 5]{jech}. However, if we just permit ``lengths'' of any ordinal to $\phi$ in Ackermann Schema, AC can now ``produce'' unique sets again! To see this, let $S$ be a set of sets, then an appropriate $\phi$ for AC would simply be $$y = a_0 \vee y = a_1 \vee y = a_2 \vee \ldots$$ where $a_0 \in s_0, a_1 \in s_1, a_2 \in s_2, \ldots$ and $S=\{s_0, s_1, s_2, \ldots\}$. 
 \item Remove the Class Construction Schema for our \textsf{AST+NWF}. Note that Class Construction Schema \textit{is} Separation Schema for $V$ and that Separation Schema immediately follows from Ackermann Schema by setting $\phi$ to $y \in a \wedge \varphi$ for $a\in V$.
@@ -66,7 +66,7 @@ On the contrary, consider the Axiom of Choice (AC), a well-known axiom independe
 The next motivation is to make the universe(s) ``as closed as possible". Because of this, we decided to:
 \begin{itemize}
 \item Restrict Extensionality to sets ($x \in V$) only.
-\item Put super-transitivity inside Ackermann schemas instead of its own axiom. This is done so that when we work on multiple universes $V_0 \subset V_1 \subset \ldots$ where $ \textsf{AST-NWF}(V_0) \wedge \textsf{AST-NWF}(V_0) \wedge\ldots$, no additional sets in $V_0$ will be shown to exist through the higher universes $V_1, \ldots$, and \textit{not} through Ackermann schemas for $V_0$.
+\item Put super-completeness inside Ackermann schemas instead of it being an axiom on its own. This is done so that when we work on multiple universes $V_0 \subset V_1 \subset \ldots$ where $ \textsf{AST-NWF}(V_0) \wedge \textsf{AST-NWF}(V_0) \wedge\ldots$, no additional sets in $V_0$ will be shown to exist through the higher universes $V_1, \ldots$, and \textit{not} through Ackermann schemas for $V_0$.
 \end{itemize}
 
 Now the Back Ackermann Schema is formulated for easy contruction of non-well-founded sets, but it looks spooky and extremely complicated. Nevertheless, the intuition is actually simple:
