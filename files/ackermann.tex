@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\usepackage{datetime}
+\newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+
+\title{My Pet Set Theory: \textsf{AST+NWF}}
+\author{poypoyan}
+\date{\petsa\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In this note we present a variant of Ackermann Set Theory (AST) with easy construction of non-well-founded sets (NWF). Motivations for using up our time for this are also laid out.
+\end{abstract}
+
+\section{The Theory}
+We will now describe a variant of Ackermann Set Theory \cite{ackermann} we denote as \textsf{AST+NWF}. \textsf{AST+NWF} is formulated in first-order logic with equality and with a constant $V$ which is interpreted as the set universe, and a binary relation $\in$ which is interpreted as the usual membership relation.
+
+\begin{definition}[Super-Completeness of $V$]
+Let $SC(V)$ be the statement $$\forall x \forall y (y \in V \wedge (y \in x \vee y \subseteq x) \rightarrow y \in V)$$ where $\subseteq$ is the usual subset relation, defined as $x \subseteq y \leftrightarrow \forall z(z \in x \rightarrow z \in y).$
+\end{definition}
+
+\noindent Now here are the axioms of $\textsf{AST+NWF}(V)$:
+
+\begin{enumerate}
+	\item Axiom of Extensionality $\textsf{Ext}(V)$: $$x \in V \wedge y \in V \wedge \forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y.$$
+	\item Ackermann Schema $\textsf{Ack}(V)$: Let $\phi(y, z_1, \ldots, z_n)$ be any unary first-order formula where the all the free variables $z_1, \ldots, z_n \in V$ and $\ne V$. Then $$(SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, \ldots))).$$
+    \item \textbf{Back} Ackermann Schema $\textsf{BAck}(V)$: Let $p$ be an $(m+1)$-ary predicate. Let $$\phi(y, z_1, \ldots, z_m, z_{m+1}, \ldots, z_{(k-1)m}, z_{(k-1)m+1}, \ldots, z_{km}, a_1, \ldots, a_n)$$ be any unary first-order formula where all the free variables (all except $y$) are $\in V$ and $\ne V$, and there are $k$ instances of $p$ in $\phi$:
+\begin{align*}
+&p(y, z_1, \ldots, z_m) \\ &p(y, z_{m+1}, \ldots, z_{2m}) \\ &\vdots \\ &p(y, z_{(k-1)m+1}, \ldots, z_{km}).
+\end{align*}
+Then if
+$$\forall x \forall y (y \in x \leftrightarrow \phi(y, \ldots)) \rightarrow p(x, b_1, \ldots, b_m)$$
+and
+$$\forall x(\bigwedge_{i=0}^{k-1}{p(x, z_{im+1}, \ldots, z_{(i+1)m})}\rightarrow x \in V) \rightarrow \\ (SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)),$$
+then
+\begin{align*}
+\bigwedge_{i=0}^{k-1}\Big(\exists!x(p(x, z_{im+1}, \ldots, z_{(i+1)m}))\ & \wedge \\ \forall x(p(x, z_{im+1}, &\ldots, z_{(i+1)m}) \rightarrow (x \in V \wedge \forall c_1, \ldots, c_m(\bigvee_{j=1}^m {c_j \ne z_{im+j}} \rightarrow \neg p(x, c_1, \ldots, c_m)) )) \Big).
+\end{align*}
+\end{enumerate}
+
+\section{Motivations}
+% Let $\phi^V$ be the \textit{relativization} to $V$ of a formula $\phi$ in first-order logic with $=$ and $\in$, but without $V$. This means that every instance of $\forall x \varphi$ in $\phi$ is replaced by $\forall x (x \in V \rightarrow \varphi)$ in $\phi^V$, and every instance of $\exists x \varphi$ is replaced by $\exists x (x \in V \wedge \varphi)$.
+
+There are several motivations for the ``design" of the theory.\\
+
+The first motivation is the focus on \textit{set constructions} instead of sets and/or proper classes. Because of this, we decided to:
+\begin{itemize}
+\item Adopt AST in the first place. The Ackermann schema captures the idea that ``natural"/``uncontroversial" set constructions are 1) definable as a first-order sentence (hence, are ``finite''), and 2) ``universe-agnostic'' (since they do not mention $V$). This reminds us while studying infinities that our ``full'' descriptions of objects are always finite.
+
+On the contrary, consider the Axiom of Choice (AC), a well-known axiom independent to ZF. The sets it constructs are not unique, hence it is said to postulate existence of sets without defining it, unlike other ZF (set construction) axioms \cite[Chapter 5]{jech}. However, if we just permit ``lengths'' of any ordinal to $\phi$ in Ackermann Schema, AC can now ``produce'' unique sets again! To see this, let $S$ be a set of sets, then an appropriate $\phi$ for AC would simply be $$y = a_0 \vee y = a_1 \vee y = a_2 \vee \ldots$$ where $a_0 \in s_0, a_1 \in s_1, a_2 \in s_2, \ldots$ and $S=\{s_0, s_1, s_2, \ldots\}$. 
+\item Remove the Class Construction Schema for our \textsf{AST+NWF}. Note that Class Construction Schema \textit{is} Separation Schema for $V$ and that Separation Schema immediately follows from Ackermann Schema by setting $\phi$ to $y \in a \wedge \varphi$ for $a\in V$.
+\end{itemize}
+
+The next motivation is to make the universe(s) ``as closed as possible". Because of this, we decided to:
+\begin{itemize}
+\item Restrict Extensionality to sets ($x \in V$) only.
+\item Put super-transitivity inside Ackermann schemas instead of its own axiom. This is done so that when we work on multiple universes $V_0 \subset V_1 \subset \ldots$ where $ \textsf{AST-NWF}(V_0) \wedge \textsf{AST-NWF}(V_0) \wedge\ldots$, no additional sets in $V_0$ will be shown to exist through the higher universes $V_1, \ldots$, and \textit{not} through Ackermann schemas for $V_0$.
+\end{itemize}
+
+Now the Back Ackermann Schema is formulated for easy contruction of non-well-founded sets, but it looks spooky and extremely complicated. Nevertheless, the intuition is actually simple:
+
+\begin{displayquote}
+If potential non-well-founded sets (the instances of $p$ in $\phi$) are used to successfully construct another version of $p$ (via $\phi$, in Ackermann Schema sense) \textit{assuming that those are all sets}, then those are indeed sets, and \textit{no other version of $p$ should ever be equal to those}.
+\end{displayquote}
+
+For example, to construct a set such that $x=\{x, a\}$ where $a \in V$, the $m$ of $p$ is simply 1 (as in $p(y)$), and $\phi(y, \ldots)$ is simply $p(y) \vee y = a$.
+
+Lastly, the last highlight in the above quote, the statement ``no other version of $p$ should ever be equal to those", needs explanation. Our main motivation for this is the ``intuitive" set-theoretic definition of ordered pair $(x,y) = \{(0,x), (1, y)\}$. For this to satisfy the ordered pair property $(x_0,y_0) = (x_1, y_1) \leftrightarrow x_0 = x_1 \wedge y_0 = y_1$ in our theory, the newly proved non-well-founded sets $(0,x)$ and $(1,y)$ should \textit{always} be unequal. Since by the nature of non-well-founded sets we cannot ``view inside" $p$, there is freedom on equalities between the newly proved non-well-founded sets. Hence the statement can be seen as either a ``cheat", or the most natural generalization of the always inequality between $(0,x)$ and $(1,y)$.
+
+\bibliographystyle{plain}
+\bibliography{ackermann}
+\end{document}
