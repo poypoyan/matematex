@@ -28,13 +28,13 @@ In this note we present a variant of Ackermann Set Theory (AST) with easy constr
 We will now describe a variant of Ackermann Set Theory \cite{ackermann} we denote as \textsf{AST+NWF}. \textsf{AST+NWF} is formulated in first-order logic with equality and with a constant $V$ which is interpreted as the set universe, and a binary relation $\in$ which is interpreted as the usual membership relation.
 
 \begin{definition}[Super-Completeness of $V$]
-Let $SC(V)$ be the statement $$\forall x \forall y (y \in V \wedge (y \in x \vee y \subseteq x) \rightarrow y \in V)$$ where $\subseteq$ is the usual subset relation, defined as $x \subseteq y \leftrightarrow \forall z(z \in x \rightarrow z \in y).$
+Let $SC(V)$ be the statement $$\forall x, y (x \in V \wedge (y \in x \vee y \subseteq x) \rightarrow y \in V)$$ where $\subseteq$ is the usual subset relation, defined as $x \subseteq y \leftrightarrow \forall z(z \in x \rightarrow z \in y).$
 \end{definition}
 
 \noindent Now here are the axioms of $\textsf{AST+NWF}(V)$:
 
 \begin{enumerate}
-	\item Axiom of Extensionality $\textsf{Ext}(V)$: $$x \in V \wedge y \in V \wedge \forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y.$$
+	\item Axiom of Extensionality $\textsf{Ext}(V)$: $$\forall x, y (x \in V \wedge y \in V \wedge \forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y).$$
 	\item Ackermann Schema $\textsf{Ack}(V)$: Let $\phi(y, z_1, \ldots, z_n)$ be any unary first-order formula where the all the free variables $z_1, \ldots, z_n \in V$ and $\ne V$. Then $$(SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, \ldots))).$$
     \item \textbf{Back} Ackermann Schema $\textsf{BAck}(V)$: Let $p$ be an $(m+1)$-ary predicate. Let $$\phi(y, z_1, \ldots, z_m, z_{m+1}, \ldots, z_{(k-1)m}, z_{(k-1)m+1}, \ldots, z_{km}, a_1, \ldots, a_n)$$ be any unary first-order formula where all the free variables (all except $y$) are $\in V$ and $\ne V$, and there are $k$ instances of $p$ in $\phi$:
 \begin{align*}
@@ -46,7 +46,7 @@ and
 $$\forall x(\bigwedge_{i=0}^{k-1}{p(x, z_{im+1}, \ldots, z_{(i+1)m})}\rightarrow x \in V) \rightarrow \\ (SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)),$$
 then
 \begin{align*}
-\bigwedge_{i=0}^{k-1}\Big(\exists!x(p(x, z_{im+1}, \ldots, z_{(i+1)m}))\ & \wedge \\ \forall x(p(x, z_{im+1}, &\ldots, z_{(i+1)m}) \rightarrow (x \in V \wedge \forall c_1, \ldots, c_m(\bigvee_{j=1}^m {c_j \ne z_{im+j}} \rightarrow \neg p(x, c_1, \ldots, c_m)) )) \Big).
+\bigwedge_{i=0}^{k-1}\Big(\exists!x(p(x, z_{im+1}, \ldots, z_{(i+1)m}))\ & \wedge \\ \forall x(p(x, z_{im+1}, &\ldots, z_{(i+1)m}) \rightarrow (x \in V \wedge \forall c_1, \ldots, c_m (\bigvee_{j=1}^m {c_j \ne z_{im+j}} \rightarrow \neg p(x, c_1, \ldots, c_m)) )) \Big).
 \end{align*}
 \end{enumerate}
 
