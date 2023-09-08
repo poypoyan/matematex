@@ -44,7 +44,7 @@ Then if
 $$\forall x(\bigwedge_{i=0}^{m-1}{p(x, z_{im}, \ldots, z_{(i+1)m-1})}\rightarrow x \in V) \rightarrow \\ (SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V))$$
 then
 \begin{align*}
-\bigwedge_{i=0}^{m-1}\Big(\exists!x(p(x, z_{im}, \ldots, z_{(i+1)m-1}))\ &  \\ \wedge\ \forall x(p(x, z_{im}, & \ldots, z_{(i+1)m-1}) \rightarrow (x \in V \wedge \forall c_0, \ldots, c_{m-1} (\bigvee_{j=0}^{m-1} {c_j \ne z_{im+j}} \rightarrow \neg p(x, c_0, \ldots, c_{m-1})) \\ \wedge & \bigwedge_{j=0}^{m-1} p_j^{-1}(z_{im+j}, x)))\Big)
+\bigwedge_{i=0}^{m-1}\Big(\exists!x(p(x, z_{im}, \ldots, z_{(i+1)m-1}))\ &  \\ \wedge\ \forall x(p(x, z_{im}, & \ldots, z_{(i+1)m-1}) \rightarrow (x \in V \wedge \forall c_0, \ldots, c_{m-1} (p(x, c_0, \ldots, c_{m-1}) \rightarrow \bigwedge_{j=0}^{m-1} {c_j = z_{im+j}}) \\ \wedge & \bigwedge_{j=0}^{m-1} p_j^{-1}(z_{im+j}, x)))\Big)
 \end{align*}
 where $p_j^{-1}$ are \textit{new} binary predicates that ``retrieve" the parameters of $p$,
 and
