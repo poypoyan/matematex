@@ -36,19 +36,19 @@ Let $SC(V)$ be the statement $$\forall x, y (x \in V \wedge (y \in x \vee y \sub
 \begin{enumerate}
 	\item Axiom of Extensionality $\textsf{Ext}(V)$: $$\forall x, y (x \in V \wedge y \in V \wedge \forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y).$$
 	\item Ackermann Schema $\textsf{Ack}(V)$: Let $\phi(y, z_0, \ldots, z_{n-1})$ be any unary first-order formula where the all the free variables $z_0, \ldots, z_{n-1} \in V$ and $\ne V$. Then $$(SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, \ldots))).$$
-    \item \textbf{Non-well-founded} Ackermann Schema $\textsf{NWFAck}(V)$: Let $p$ be a \textit{new} $(m+1)$-ary predicate. Let $$\phi(y, z_0, \ldots, z_{m-1}, z_{m}, \ldots, z_{(m-1)m-1}, z_{(m-1)m}, \ldots, z_{m^2-1}, a_0, \ldots, a_{n-1})$$ be any unary first-order formula where all the free variables (all except $y$) are $\in V$ and $\ne V$, and there are $m$ \textit{different}\footnote{For all $i,j \in \{0, \ldots, m-1\}$ with $i \ne j$, it is not the case that $z_{im} = z_{jm} \wedge \ldots \wedge z_{(i+1)m-1} = z_{(j+1)m-1}$.} instances of $p$ in $\phi$:
+    \item \textbf{Non-well-founded} Ackermann Schema $\textsf{NWFAck}(V)$: Let $p$ be a \textit{new} $(m+1)$-ary predicate. Let $$\phi(y, z_0, \ldots, z_{m-1}, a_0, \ldots, a_{n-1})$$ be any unary first-order formula where all the free variables $z_0, \ldots, z_{m-1}, a_0, \ldots, a_{n-1} \in V$ and $\ne V$, and there are $m$ instances of $p$ in $\phi$:
 \begin{align*}
-&p(y, z_0, \ldots, z_{m-1}) \\ &p(y, z_m, \ldots, z_{2m-1}) \\ &\vdots \\ &p(y, z_{(m-1)m}, \ldots, z_{m^2-1}).
+&p(y, 0, 0, \ldots, 0, z_0) \\ &p(y, 1, 0, \ldots, 0, z_1) \\ &p(y, 1, 1, \ldots, 0, z_2) \\ &\vdots \\ &p(y, 1, \ldots,1, 1, z_{m-1})
 \end{align*}
-Then if
-$$\forall x(\bigwedge_{i=0}^{m-1}{p(x, z_{im}, \ldots, z_{(i+1)m-1})}\rightarrow x \in V) \rightarrow \\ (SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V))$$
-then
+where we define $0 = \emptyset$ and $1 = \{0\}$. Then if
+$$\forall x(\bigwedge_{i=0}^{m-1}{p(x, [i > 0], [i > 1], \ldots, z_i)}\rightarrow x \in V) \rightarrow \\ (SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V))$$
+where $[\cdot]$ is the Iverson bracket, then
 \begin{align*}
-\bigwedge_{i=0}^{m-1}\Big(\exists!x(p(x, z_{im}, \ldots, z_{(i+1)m-1}))\ &  \\ \wedge\ \forall x(p(x, z_{im}, & \ldots, z_{(i+1)m-1}) \rightarrow (x \in V \wedge \forall c_0, \ldots, c_{m-1} (p(x, c_0, \ldots, c_{m-1}) \rightarrow \bigwedge_{j=0}^{m-1} {c_j = z_{im+j}}) \\ \wedge & \bigwedge_{j=0}^{m-1} p_j^{-1}(z_{im+j}, x)))\Big)
+\bigwedge_{i=0}^{m-1}\Big(\exists!x(p(x, [i > 0], [i > 1], \ldots, z_i)) \wedge \forall x\Big(p(x, [i > 0], [i > 1], \ldots, z_i) \rightarrow \\ \Big(x \in V \\ \wedge\ \forall c_0, \ldots, c_{m-1} (p(x, c_0, \ldots, c_{m-1}) \rightarrow \bigwedge_{j=0}^{m-2} {c_j = [i > j]} \wedge c_{m-1} = z_i) \\ \wedge \bigwedge_{j=0}^{m-2} p_j^{-1}([i > j], x) \wedge p_{m-1}^{-1}(z_i, x)\Big)\Big)\Big)
 \end{align*}
 where $p_j^{-1}$ are \textit{new} binary predicates that ``retrieve" the parameters of $p$,
 and
-$$\forall x (\forall y (y \in x \leftrightarrow \phi(y, \ldots)) \leftrightarrow p(x, z_{m-1}, \ldots, z_{m^2-1})).$$
+$$\forall x (\forall y (y \in x \leftrightarrow \phi(y, \ldots)) \leftrightarrow p(x, z_0, \ldots, z_{m-1})).$$
 \end{enumerate}
 
 \section{Motivations}
@@ -78,7 +78,7 @@ For example, to construct a set such that $x=\{x, a\}$ where $a \in V$, the $m$ 
 
 The last highlight in the above quote, the statement ``no other version of $p$ should ever be equal to those", needs explanation. Our main motivation for this is the ``intuitive" set-theoretic definition of ordered pair $(x,y) = \{(0,x), (1, y)\}$. For this to satisfy the ordered pair property $(x_0,y_0) = (x_1, y_1) \leftrightarrow x_0 = x_1 \wedge y_0 = y_1$ in our theory, the newly proved non-well-founded sets $(0,x)$ and $(1,y)$ should \textit{always} be unequal. Since by the nature of non-well-founded sets we cannot ``view inside" $p$, there is freedom on equalities between the newly proved non-well-founded sets. Hence the statement can be seen as either a ``cheat", or the most natural generalization of the always inequality between $(0,x)$ and $(1,y)$.
 
-Lastly, still in NWF Ackermann Schema, the motivation behind restricting to $m$ instances of $p$ in $\phi$ and the usage of $z_{m-1} \ldots z_{m^2-1}$ in $p$ in the final clause is also the above definition of ordered pair. We are still not fully satisfied with the axiom schema, but we hope that this is enough for now.
+Lastly, still in NWF Ackermann Schema, the motivation behind restricting to $m$ instances of $p$ in $\phi$ and the usage of $z_0, \ldots, z_{m-1}$ in $p$ in the final clause is also the above definition of ordered pair. We are still not fully satisfied with the axiom schema, but we hope that this is enough for now.
 
 \bibliographystyle{plain}
 \bibliography{ackermann}
