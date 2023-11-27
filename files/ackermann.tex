@@ -34,15 +34,15 @@ Let $SC(V)$ be the statement $$\forall x, y (x \in V \wedge (y \in x \vee y \sub
 \noindent Now here are the axioms of $\textsf{AST+NWF}(V)$:
 
 \begin{enumerate}
-	\item Axiom of Extensionality $\textsf{Ext}(V)$: $$\forall x, y (x \in V \wedge y \in V \wedge \forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y).$$
-	\item Ackermann Schema $\textsf{Ack}(V)$: Let $\phi(y, z_0, \ldots, z_{n-1})$ be a unary first-order formula where all the constants $z_0, \ldots, z_{n-1} \in V$ and $\ne V$. Then $$(SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, \ldots))).$$
+    \item Axiom of Extensionality $\textsf{Ext}(V)$: $$\forall x, y (x \in V \wedge y \in V \wedge \forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y).$$
+    \item Ackermann Schema $\textsf{Ack}(V)$: Let $\phi(y, z_0, \ldots, z_{n-1})$ be a unary first-order formula where all the constants $z_0, \ldots, z_{n-1} \in V$ and $\ne V$. Then $$(SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, \ldots))).$$
     \item \textbf{Non-well-founded} Ackermann Schema $\textsf{NWFAck}(V)$: Let $\phi(y, z_0, \ldots, z_{n-1})$ be a unary first-order formula where all the constants $z_0, \ldots, z_{n-1} \in V$ and $\ne V$, and it is of the form\footnote{Yes, this is a recursive definition!}
 $$\forall x_0, \ldots ((\forall y_0(y_0 \in x_0 \leftrightarrow \phi(y_0, \ldots_0)) \wedge \ldots) \rightarrow ([y = x_i \vee] \ldots))$$
 where in the last ellipsis, sub-formulas of form $\forall a \ldots (\forall b (b \in a \leftrightarrow ([b = x_i \vee] \ldots)))$ may occur, and all those instances of $\phi$ in $\phi(y, \ldots)$ are also \textit{defined}. Note that $[\cdot]$ means that what is inside it may or may not be there in the formula. Then if 
 $$(\bigwedge_i \forall y_i( \phi(y_i, \ldots_i) \rightarrow y_i \in V)) \rightarrow \\ (SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)),$$
 then
 \begin{align*}
-\exists x(x \in V \wedge \forall y(&y \in x \leftrightarrow \phi(y, \ldots))) \\ \wedge\ &\forall x, c_0, \ldots, c_{n-1} (\forall y (y \in x \leftrightarrow \phi(y, z_0, \ldots, z_{n-1}) \leftrightarrow \phi(y, c_0, \ldots, c_{n-1})) \rightarrow \bigwedge_{j=0}^{n-1} {c_j = z_j}).
+    \exists x(x \in V \wedge \forall y(&y \in x \leftrightarrow \phi(y, \ldots))) \\ \wedge\ &\forall y, c_0, \ldots, c_{n-1} ((\phi(y, z_0, \ldots, z_{n-1}) \leftrightarrow \phi(y, c_0, \ldots, c_{n-1})) \rightarrow \bigwedge_{j=0}^{n-1} {c_j = z_j}).
 \end{align*}
 \end{enumerate}
 
