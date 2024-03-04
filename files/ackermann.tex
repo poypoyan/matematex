@@ -14,7 +14,7 @@
 
 \title{My Pet Set Theory: \textsf{AST+NWF}}
 \author{poypoyan}
-\date{\petsa\today}
+\date{27 Dec 2023}   % \petsa\today
 
 \begin{document}
 
@@ -69,12 +69,11 @@ Now the Non-well-founded Ackermann Schema is formulated for easy contruction of 
 If instances of $\phi$ are used to define itself, and we assume that all that satisfy those instances of $\phi$ are all sets, then $\phi$ can indeed construct a set, and the constructed set is \textit{unique through the given parameters}.
 \end{displayquote}
 
-For example, to construct a set such that $x=\{x, a\}$ where $a \in V$, $\phi(y, a)$ is defined as $$\forall x_0 (\forall y_0 (y_0 \in x_0 \leftrightarrow \phi(y_0, a)) \rightarrow y = x_0 \vee y = a).$$ Notice that this satisfies the prescribed form for $\phi$. This is motivated by what I'll call the \textit{Opacity Principle}: elements and subsets of a non-well-founded set should \textit{never} be used to build that set, for three reasons: 1) the elements (and subsets consequently) are not yet defined before $\phi$ is stated, 2) to prevent constructing properties that well-founded sets can satisfy (i.e., $\omega$ is a set such that $\bigcup x = x$), and 3) to prevent inconsistency (i.e., a set such that $2^x = x$ contradicts Cantor's theorem). Next, the statement in the axiom ``all those instances of $\phi$ in $\phi(y, \ldots)$ are also \textit{defined}" is a reference to ``mutually defined non-well-founded sets" like the two sets $x(0)$ and $x(1)$ such that $x(1) = \{x(0), a\}$ and $x(0) = \{x(1), b\}$ where $a, b \in V$. Without satisfying this statement, $x(1)$ will be defined using $x(0)$ which is undefined, and hence both sets are meaningless.
+For example, to construct a set such that $x=\{x, a\}$ where $a \in V$, $\phi(y, a)$ is defined as $$\forall x_0 (\forall y_0 (y_0 \in x_0 \leftrightarrow \phi(y_0, a)) \rightarrow y = x_0 \vee y = a).$$ Notice that this satisfies the prescribed form for $\phi$. This is motivated by what I'll call the \textit{Opacity Principle}: elements and subsets of a non-well-founded set should \textit{never} be used to build that set, for two reasons: 1) to prevent constructing properties ``so loose" that well-founded sets can satisfy it (i.e., $\omega$ is a set such that $\bigcup x = x$), and 2) to prevent inconsistency (i.e., a set such that $2^x = x$ contradicts Cantor's theorem). Next, the statement in the axiom ``all those instances of $\phi$ in $\phi(y, \ldots)$ are also \textit{defined}" is a reference to ``mutually defined non-well-founded sets" like the two sets $x(0)$ and $x(1)$ such that $x(1) = \{x(0), a\}$ and $x(0) = \{x(1), b\}$ where $a, b \in V$. Without satisfying this statement, $x(1)$ will be defined using $x(0)$ which is undefined, and hence both sets are meaningless.
 
 The last highlight in the above quote, the statement ``unique through the given parameters", needs explanation. Our main motivation for this is the ``intuitive" set-theoretic definition of ordered pair $(x,y) = \{(0,x), (1, y)\}$. For this to satisfy the ordered pair property $(x_0,y_0) = (x_1, y_1) \leftrightarrow x_0 = x_1 \wedge y_0 = y_1$ in our theory, the sets $(0,x)$ and $(1,y)$ should \textit{always} be unequal. Since by the Opacity Principle we cannot ``view inside" $\phi$, there is freedom on equalities of elements across non-well-founded sets. Hence the statement can be seen as either a ``cheat", or the most natural generalization of the always inequality between $(0,x)$ and $(1,y)$.
 
-Lastly, the nature of recursive defining of $\phi$ in the schema needs further consideration. Maybe \textsf{AST+NWF} is not a first-order theory anymore because recursive definition of predicates causes its signature to have ``incrementing" quantity of predicates. Also, the complication of restriction for $\phi$ seems to suggest a weakening which will break the Opacity Principle, but I don't think that it's worth it.
-
+Lastly, the nature of recursive defining of $\phi$ in the schema needs further consideration. Maybe \textsf{AST+NWF} is not a first-order theory anymore because recursive definition of predicates causes its signature to have ``incrementing" quantity of predicates.
 \bibliographystyle{plain}
 \bibliography{ackermann}
 \end{document}
