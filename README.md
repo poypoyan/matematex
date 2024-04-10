@@ -5,6 +5,7 @@ This is a collection of LaTeX write-ups for mathematical ideas and such that int
 
 ### Titles
 * [My Pet Set Theory: AST+NWF](files/ackermann.pdf)
+* [Paghuhulog at Di Pagkamainam ng Batay](files/paghuhulog.pdf)
 * [The Diagonal Argument, Clarified and Generalized](files/diagonal.pdf)
 * [Fractal Tangency](files/fractal.pdf)
 * [Description of `treedrawing`](files/treedrawing.pdf)

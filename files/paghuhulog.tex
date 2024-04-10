@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\usepackage{datetime}
+\newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
+
+\newtheorem{definition}{Kahulugan}[section]
+\newtheorem{theorem}{Teyorem}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{problem}[theorem]{Problema}
+\renewcommand{\abstractname}{Abstrak}
+\renewcommand{\refname}{Sanggunian}
+
+\title{Paghuhulog at Di Pagkamainam ng Batay}
+\author{poypoyan}
+\date{\petsa\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Tutal wala namang tumitingin ng repositoryong naglalaman ng payl na ito kundi ako, isinulat ko na lámang ang papel na ito sa aking sinusung wika (at sa pamamaraang trip ko). Marahi'y mainam rin itong pagsubok para sa akin sa pagsulat ng matematika sa Tagalog.
+
+Maaari itong ituring na kasunod sa talâ kong ``My Pet Set Theory: \textsf{AST+NWF}" \cite{ast-nwf}. Inilatag dito ang paghuhulog (\textit{defining}) ng kahulugan sa Unang Antas na Lohika (\textit{First-order Logic}), at ang Di Pagkamainam ng Batay (\textit{Non-well-foundedness}) bilang isang anyo ng paghuhulog.
+\end{abstract}
+
+\section{Ang Kahulugan ng Kahulugan}
+Hindi ko pa nakikita sa ibang panitikan ang pagpapahayag ko ng di pagkamainam ng batay sa \textsf{AST+NWF}, kayâ kailangan ng paglilinaw sa kung ano ang nangyayari sa teyorya kapagka naghuhulog. Pagtutuunan ko lámang ng pansin sa papel na ito ang Unang Antas na Lohika (FOL) sapagkat 1) ito ang batayang lohika ng \textsf{AST+NWF}, at 2) ito ang pinakapinag-aaralang lohika sa larang ng lohikang matematika.
+
+Maglatag ng isang unang antas na teyorya $\textsf{T} = (\sigma, \mathcal{L}_\sigma, \mathcal{A})$ nks\footnote{na kung saan} ang $\sigma$, $\mathcal{L}_\sigma$ at $\mathcal{A}$ ay ang tangkas (\textit{set}) ng mga sariling tanda (\textit{signatures}), wikang may mga tandang iyon, at tangkas ng mga aksyom, ayon sa pagkakabanggit.
+
+\begin{definition}[Teyoryang may bagong panaguri]
+\label{paghuhulog}
+Ang \textsf{T+p} ay isang teyoryang gawa sa \textsf{T} na may bagong panaguri (\textit{predicate}) \textsf{p} kung $\textsf{T+p} = (\sigma \cup \{\textsf{p}\}, \mathcal{L}_{\sigma \cup \{\textsf{p}\}}, \mathcal{A} \cup \{\alpha\})$ nks ang $\alpha$ ay ang sumusunod na aksyom ng paghuhulog ng panaguri
+\begin{align}
+\forall z_0, \ldots, z_{n-1}(\textsf{p}(z_0, \ldots, z_{n-1}) \leftrightarrow a(z_0, \ldots, z_{n-1})).
+\end{align}
+nks $a \in \mathcal{L}_\sigma$.
+\end{definition}
+
+Ang gayong panaguri ay akmang tawaging mainam ang batay sapagkat maaaring ``ibalik" ang bagong teyorya túngo sa \textsf{T}---ang lahat ng \textsf{p} sa $\mathcal{L}_{\sigma \cup \{\textsf{p}\}}$ ay papalitan ng (laman ng) $a$, at tatanggalin na ang mismong \textsf{p} at aksyom (1). Itong pagbabalik rin ang isa sa dahilan kung bakit di nagdadalawang-isip ang mga teyoretista ng modelo na pag-aralan ang mga teyoryang walang kahulugan lámang, kahit sinasabi ng \ref{paghuhulog} na sa bawat bagong kahulugan ay may bagong teyorya. Ang isa pang dahilan ay nasa susunod na seksyon.
+
+Ngayon, paano na maghulog ng panaguri na di mainam ang batay? Simple lang:
+
+\centerline{\underline{Ang $a$ sa aksyom (1) ay mayroon nang \textsf{p} sa loob nito (kayâ $a \in \mathcal{L}_{\sigma \cup \{\textsf{p}\}}$)!}}
+
+At ito nga ang anyo ng $\phi$ sa \textsf{NWFAck} ng \cite{ast-nwf}---hinulog ang $\phi$ nks nasa loob ang $\phi$ sa $a$. Akma ang pagtawag ng ``di mainam ang batay" sapagkat \textit{hindi} na maaaring gawin ang kasusulat lámang na pagbabalik sa lumang teyorya. Tila bagá may ``salaming" tinitignan ang panaguri upang makita at mailarawan ang sarili kasama ng ibang nakikita sa salamin.
+
+Ngayon, paano naman maghulog ng panaguri na di binabanggit ang sarili (\textit{self-referential}) na para bang balintuna ni Yablo\cite{yablo} sa halip ng balintuna ng sinungaling? Sa pangkalahatan, kailangan ng isang bagsakang paghuhulog ng walang hanggang nabibilang (\textit{countable}) na mga panaguri $\textsf{p}_{0}, \textsf{p}_{1}, \textsf{p}_{2}, \ldots$, at sundin lang ang \ref{paghuhulog}. Kung sa loob naman ng \textsf{AST+NWF}, kailangan ng $\phi$ ng isang pantanging baryable $z_0\in\mathbb{N}$ nks ang bawat instansya ng $\phi$ sa loob ng $a$ ay may anyong $\phi(z_0 + i, \ldots), i > 0.$
+
+\section{Sa Ibáyo ng Karaniwang Paghuhulog ng Istruktura?}
+
+Sa palagay ko, kayâ napakadalang pag-aralan ng di pagkamainam ng batay ay dahil sa mainam ang batay ng mga istrukturang pinag-aaralan ngayon sa matematika. Halimbawa, ang \textit{pangkat} $\mathbb{G} = (G, \cdot, 1)$ ay binubuo ng isang tangkas $G$, dalawahang operasyon/punsyon $\cdot:G \times G \rightarrow G$, at isang $1 \in G$ na maaaring tawaging ``di nang-iiba" o ``neyutro". Ang pagkamainam ng batay ay makikita sa waring dapat na ``naunang nahulog" ang tatlong bumubuo kaysa $\mathbb{G}$. Sa ibang sabi, hindi kailanman ginawang tumbas sa $\mathbb{G}$ ang alinman sa tatlo!
+
+Ang pag-aalis ng paghihigpit na ito ang maaaring unang hakbang upang makapaghulog ng mga matematikang istruktura na di mainam ang batay. Sa totoo lang, kahit ako'y hindi gaanong naniniwalang may ihuhulog sa hinaharap na mahahalagang istrukturang ganito. Sa huli, sa tingin ko, ito na ang hanggahan ng pilosopiya ng teyorya ng tangkas na ``ang bagay ay binubuo ng iba pang bagay". 
+
+\bibliographystyle{plain}
+\bibliography{paghuhulog}
+\end{document}
