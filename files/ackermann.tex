@@ -25,21 +25,16 @@ In this note we present a variant of Ackermann Set Theory (AST) with easy constr
 \end{abstract}
 
 \section{The Theory}
-We will now describe a variant of Ackermann Set Theory \cite{ackermann} we denote as \textsf{AST+NWF}. \textsf{AST+NWF} is formulated in first-order logic with equality and with a constant $V$ which is interpreted as the set universe, and a binary relation $\in$ which is interpreted as the usual membership relation.
-
-\begin{definition}[Super-Completeness of $V$]
-Let $SC(V)$ be the statement $$\forall x, y (x \in V \wedge (y \in x \vee y \subseteq x) \rightarrow y \in V)$$ where $\subseteq$ is the usual subset relation, defined as $x \subseteq y \leftrightarrow \forall z(z \in x \rightarrow z \in y).$
-\end{definition}
-
-\noindent Now here are the axioms of $\textsf{AST+NWF}(V)$:
+We will now describe a variant of Ackermann Set Theory \cite{ackermann} we denote as \textsf{AST+NWF}. \textsf{AST+NWF} is formulated in first-order logic with equality and with a constant $V$ which is interpreted as the set universe, and a binary relation $\in$ which is interpreted as the usual membership relation. Here are the axioms of $\textsf{AST+NWF}(V)$:
 
 \begin{enumerate}
     \item Axiom of Extensionality $\textsf{Ext}(V)$: $$\forall x, y (x \in V \wedge y \in V \wedge \forall z(z\in x \leftrightarrow z \in y) \rightarrow x = y).$$
-    \item Ackermann Schema $\textsf{Ack}(V)$: Let $\phi(y, z_0, \ldots, z_{n-1})$ be a unary first-order formula where all the constants $z_0, \ldots, z_{n-1} \in V$ and $\ne V$. Then $$(SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, \ldots))).$$
+    \item Axiom of Supercompleteness $\textsf{SC}(V)$: $$\forall x, y (x \in V \wedge (y \in x \vee y \subseteq x) \rightarrow y \in V)$$ where $\subseteq$ is the usual subset relation, defined as $x \subseteq y \leftrightarrow \forall z(z \in x \rightarrow z \in y).$
+    \item Ackermann Schema $\textsf{Ack}(V)$: Let $\phi(y, z_0, \ldots, z_{n-1})$ be a unary first-order formula where all the constants $z_0, \ldots, z_{n-1} \in V$ and $\ne V$. Then $$(\forall y(\phi(y, \ldots) \rightarrow y \in V)) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow \phi(y, \ldots))).$$
     \item \textbf{Non-well-founded} Ackermann Schema $\textsf{NWFAck}(V)$: Let $\phi(y, z_0, \ldots, z_{n-1})$ be a unary first-order formula where all the constants $z_0, \ldots, z_{n-1} \in V$ and $\ne V$, and it is of the form\footnote{Yes, this is a recursive definition!}
 $$\forall x_0, \ldots ((\forall y_0(y_0 \in x_0 \leftrightarrow \phi(y_0, \ldots_0)) \wedge \ldots) \rightarrow ([y = x_i \vee] \ldots))$$
 where in the last ellipsis, sub-formulas of form $\forall a \ldots (\forall b (b \in a \leftrightarrow ([b = x_i \vee] \ldots)))$ may occur, and all those instances of $\phi$ in $\phi(y, \ldots)$ are also \textit{defined}. Note that $[\cdot]$ means that what is inside it may or may not be there in the formula. Then if 
-$$(\bigwedge_i \forall y_i( \phi(y_i, \ldots_i) \rightarrow y_i \in V)) \rightarrow \\ (SC(V) \rightarrow \forall y(\phi(y, \ldots) \rightarrow y \in V)),$$
+$$(\bigwedge_i \forall y_i( \phi(y_i, \ldots_i) \rightarrow y_i \in V)) \rightarrow \\ (\forall y(\phi(y, \ldots) \rightarrow y \in V)),$$
 then
 \begin{align*}
     \exists x(x \in V \wedge \forall y(&y \in x \leftrightarrow \phi(y, \ldots))) \\ \wedge\ &\forall y, c_0, \ldots, c_{n-1} ((\phi(y, z_0, \ldots, z_{n-1}) \leftrightarrow \phi(y, c_0, \ldots, c_{n-1})) \rightarrow \bigwedge_{j=0}^{n-1} {c_j = z_j}).
@@ -47,7 +42,7 @@ then
 \end{enumerate}
 
 \section{Motivations}
-There are several motivations for the ``design" of the theory.\\
+We have at least two motivations for the ``design" of the theory.\\
 
 The first motivation is the focus on \textit{set constructions} instead of sets and/or proper classes. Because of this, we decided to:
 \begin{itemize}
@@ -57,11 +52,7 @@ On the contrary, consider the Axiom of Choice (AC), a well-known axiom independe
 \item Remove the Class Construction Schema for our \textsf{AST+NWF}. Note that Class Construction Schema \textit{is} Separation Schema for $V$ and that Separation Schema immediately follows from Ackermann Schema by setting $\phi$ to $y \in a \wedge \varphi$ for $a\in V$.
 \end{itemize}
 
-The next motivation is to make the universe(s) ``as closed as possible". Because of this, we decided to:
-\begin{itemize}
-\item Restrict Extensionality to sets ($x \in V$) only.
-\item Put super-completeness inside Ackermann schemas instead of it being an axiom on its own. This is done so that when we work on multiple universes $V_0, V_1, \ldots$ such that $V_0 \in V_1 \in \ldots,$ $V_0 \subset V_1 \subset \ldots,$ and $\textsf{AST-NWF}(V_0) \wedge \textsf{AST-NWF}(V_1) \wedge\ldots,$ no additional sets in $V_0$ will be shown to exist through the higher universes $V_1, \ldots.$
-\end{itemize}
+Another motivation is to easily extend to multiple universes as desired: $V_0, V_1, \ldots$ such that $V_0 \in V_1 \in \ldots$ and $\textsf{AST-NWF}(V_0)$ and $\textsf{AST-NWF}(V_1)$ and $\ldots.$ Note that \textsf{SC} and a contradiction from \textsf{Ack} should imply that $V_0 \subset V_1 \subset \ldots.$ Universes can be thought of as those that are ``beyond construction", and we need to keep track of those and keep all our discourse inside of those. This is also why we restricted \textsf{Ext} to $V$.
 
 Now the Non-well-founded Ackermann Schema is formulated for easy contruction of non-well-founded sets (obviously), but it is a beast! Nevertheless, the intuition is actually simple:
 
