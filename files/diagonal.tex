@@ -13,7 +13,7 @@
 
 \title{The Diagonal Argument, Clarified and Generalized}
 \author{poypoyan}
-\date{\petsa\today}
+\date{11 Mar 2022}   % \petsa\today
 
 \begin{document}
 
@@ -49,7 +49,7 @@ One may notice that the more general \textit{Cantor's theorem}, $2^{A} > A$ for 
 \section{Gödel-Carnap Diagonal Lemma}
 We'll just do an informal sketch. Setup first: let $\Gamma$ be a logic on a language $\mathcal{L}$, $N \subset \mathcal{L}$ be the set of all ``objects of study" of $\Gamma$, $P \subset \mathcal{L}$ be the set of all ``definable" propositions, and $C \subset \mathcal{L}$ be the set of all definable predicates with only one free variable $x$. For example, if $\Gamma = \textsf{PA}$, (Classical) Peano Arithmetic, then the strings $``\textsf{S0}", ``\textsf{SS0}" \in N$, and $``x + \textsf{S0} = \textsf{SS0}" \in C$. In an abuse of notation, while $c \in C$ is a string, it can also be treated as a function $c:N \rightarrow P$. For example in \textsf{PA}, $``x + \textsf{S0} = \textsf{SS0}"(``\textsf{S0}") = ``\textsf{S0} + \textsf{S0} = \textsf{SS0}"$.
 
-One requirement of the lemma is the existence of the so-called \textit{Gödel numbering} which is an injective (total) function $g:\mathcal{L} \rightarrow N$. We can now apply the diagonal argument: applying Lemma \ref{diag-arg} to $A = \{x \in N \mid g^{-1}(x) \in C\}$, $B = P$, $C$ is itself, and $f = g^{-1}$ restricted to $A$, gives the diagonal function $d: A \rightarrow B$ such that $d(x) = (g^{-1}(x))(x)$. We can now present a strong variant of the lemma:
+One requirement of the lemma is the existence of the so-called \textit{Gödel numbering} which is an injective (total) function $g:\mathcal{L} \rightarrow N$. We can now apply the diagonal argument: applying Lemma \ref{diag-arg} to $A = \{x \in N \mid g^{-1}(x) \in C\}$, $B = P$, $C$ is itself, and $f = g^{-1}$ restricted to $A$, gives the diagonal function $d: A \rightarrow B$ such that $d(x) = (g^{-1}(x))(x)$. We can now present a variant of the lemma:
 
 \begin{lemma}
 If $d$ is definable in $\mathcal{L}$ (in short, $d \in C$) and for all $c_1, c_2 \in C$, $c_1 \circ g \circ c_2 \in C$, then for every $c \in C$, there exists a predicate $x \in C$ such that $x = c \circ g \circ x$.
@@ -59,8 +59,6 @@ Define a new predicate $h = c \circ g \circ d$. This is in $C$ because both $c, 
 \end{proof}
 
 This proof is based from Section 2.2 of \cite{salehi} \footnote{The``$\varrho$" there is defined as $g \circ d$ here.} which ultimately came from \cite{jeroslow}. The name of lemma is not due to the resemblance to the statement, but to the usage of a diagonal function in its proof!
-
-Lastly, the reason we say that the presented lemma is ``strong" is that the more commonly presented property of $x$ is something like $\Gamma \vdash x(n) \leftrightarrow (c \circ g \circ x)(n)$ \footnote{Note that the weaker property requires $``\leftrightarrow" \in \mathcal{L}$.} with a valid $n \in N$, and surely that is weaker than $x = c \circ g \circ x$.
 
 \bibliographystyle{plain}
 \bibliography{diagonal}
