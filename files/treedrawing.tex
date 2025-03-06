@@ -150,12 +150,12 @@ The problem with the previous function is that several major nodes will have the
 	\centering
 	\begin{tikzpicture}[nodes = {draw, circle, minimum width = 4pt, inner sep = 0pt}]
 		% sub-rooted tree 1
-		\draw[-, thick = 2pt] (0 cm, 0 cm) -- (0 cm, -1 cm);
+		\draw[-, thick = 2pt] (-1 cm, 0 cm) -- (0 cm, -1 cm);
 		\draw[-, thick = 2pt] (0 cm, -1 cm) -- (0 cm, -2 cm);
-		\draw[-, thick = 2pt] (0 cm, 0 cm) -- (-1 cm, -1 cm);
+		\draw[-, thick = 2pt] (-1 cm, 0 cm) -- (-1 cm, -1 cm);
 		\draw[-, thick = 2pt] (-1 cm, -1 cm) -- (-1 cm, -2 cm);
 		\draw[-, thick = 2pt] (-1 cm, -1 cm) -- (0 cm, -2 cm);
-		\node[color = red, fill = red] at (0 cm, 0 cm) {};
+		\node[color = red, fill = red] at (-1 cm, 0 cm) {};
 		\node[color = red, fill = red] at (0 cm, -1 cm) {};
 		\node[color = red, fill = red] at (-1 cm, -1 cm) {};
 		\node[color = red, fill = red] at (-1 cm, -2 cm) {};
