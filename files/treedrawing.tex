@@ -144,19 +144,42 @@ For each major node $x$ with one child node, minor nodes are traversed until enc
 The reasoning behind placement of children is aesthetics: the central path from root should have the most major nodes, and the sub-rooted trees that branch away from the central path should be minimal.
 
 \subsection{Function \texttt{fixCoord}}
-The problem with the previous function is that several major nodes will have the same coordinates. This is what \texttt{fixCoord} fixes. For each major node $x$, let $y$ be first index in \texttt{coordNodes} such that \texttt{coordNodes[x] = coordNodes[y]}. If $x \ne y$, then a duplicate coordinate is found.
+The problem with the previous function is that several major nodes will have the same coordinate. This is what \texttt{fixCoord} fixes. For each major node $i$, the function finds first the \textit{closest} node not equal to $i$ but with the same coordinate as $i$; let's call that node $j$. There can be many such $j$, but whatever the function finds will be fine. See Figure \ref{closestnode} to best understand what we mean by ``closest" here. In other words, $j$ is closest to $i$ if \texttt{majorNodes[i]} and \texttt{majorNodes[j]} have the most same entries before diverging. These first non-same major nodes split the path for $i$ and for $j$, and are stored in \texttt{splitNodeA} and \texttt{splitNodeB}, respectively.
 
-Using \texttt{majorNodes}, the two major nodes that have the same parent and splits the path from root to $x$ and the path from root to $y$ are determined. The indices of that major node for $x$ and for $y$ are stored at \texttt{splitNodeA} and \texttt{splitNodeB} (let's say respectively). If for example \texttt{weight[splitNodeA] > weight[splitNodeB]}, then the whole sub-rooted tree by \texttt{splitNodeB} must move \textit{away} from the central path from root (and vice versa). This also means that the coordinate of $y$ must move. How many \texttt{dist} to move? The whole sub-rooted tree by \texttt{splitNodeB} must move away until the coordinate of $y$ is not equal to the coordinates of $x$ and all siblings of $x$.
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[nodes = {draw, circle, minimum width = 4pt, inner sep = 0pt}]
+		% sub-rooted tree 1
+		\draw[-, thick = 2pt] (0 cm, 0 cm) -- (0 cm, -1 cm);
+		\draw[-, thick = 2pt] (0 cm, -1 cm) -- (0 cm, -2 cm);
+		\draw[-, thick = 2pt] (0 cm, 0 cm) -- (-1 cm, -1 cm);
+		\draw[-, thick = 2pt] (-1 cm, -1 cm) -- (-1 cm, -2 cm);
+		\draw[-, thick = 2pt] (-1 cm, -1 cm) -- (0 cm, -2 cm);
+		\node[color = red, fill = red] at (0 cm, 0 cm) {};
+		\node[color = red, fill = red] at (0 cm, -1 cm) {};
+		\node[color = red, fill = red] at (-1 cm, -1 cm) {};
+		\node[color = red, fill = red] at (-1 cm, -2 cm) {};
+		% sub-rooted tree 2
+		\draw[-, thick = 2pt] (1 cm, 0 cm) -- (1 cm, -1 cm);
+		\draw[-, thick = 2pt] (1 cm, -1 cm) -- (0 cm, -2 cm);
+		\draw[-, thick = 2pt] (1 cm, -1 cm) -- (1 cm, -2 cm);
+		\draw[-, thick = 2pt] (1 cm, -1 cm) -- (2 cm, -2 cm);
+		\node[color = red, fill = red] at (1 cm, 0 cm) {};
+		\node[color = red, fill = red] at (1 cm, -1 cm) {};
+		\node[color = red, fill = red] at (0 cm, -2 cm) {};
+		\node[color = red, fill = red] at (1 cm, -2 cm) {};
+		\node[color = red, fill = red] at (2 cm, -2 cm) {};
+		% labels for some branches and a node
+		\node[draw = none] at (-0.6 cm, -1.7 cm) {$x$};
+		\node[draw = none] at (0.2 cm, -1.5 cm) {$y$};
+		\node[draw = none] at (0.6 cm, -1.7 cm) {$z$};
+		\node[draw = none] at (0 cm, -2.3 cm) {$c$};
+	\end{tikzpicture}
+	\caption{There are 3 nodes with same coordinate $c$. Node from branch $x$ is closer to node from branch $y$ than to node from branch $z$. The upper nodes connecting to $x$ and to $y$ are what will be stored in \texttt{splitNodeA} and \texttt{splitNodeB}.}
+	\label{closestnode}
+\end{figure}
 
-After the movement, the next $x$ is checked. Looping through major nodes is continued until no duplicate coordinate is found, which means the function is done.
-
-\section{Notes for Programmer}
-The main output of the algorithm is the final coordinates of each node, \texttt{coordNodes}. On the other hand, the drawing of branches is actually not an output! This means that the drawing of branches must be done in a separate code/program, although I have the simple `straight line' branches (as seen in Figures \ref{setinitcoord} and \ref{interbranch}) in mind.
-
-Since the coordinate of root node and \texttt{dist} are hard-coded to $(0,0)$ and $1.0$, respectively, one can `customize' the coordinates in the following manner: $$\texttt{r + s * coordNodes[i]}$$
-for all nodes \texttt{i}, where \texttt{r} is the actual root node coordinate and \texttt{s} is a scalar.
-
-Lastly, intersecting branches in a manner like in Figure \ref{interbranch} may occur.
+Closeness should be considered so that the scenario of intersecting branches like in Figure \ref{interbranch} will never occur in the final output.
 
 \begin{figure}[htbp]
 	\centering
@@ -183,6 +206,16 @@ Lastly, intersecting branches in a manner like in Figure \ref{interbranch} may o
 	\caption{The right sub-rooted tree is sandwiched between two children of the left sub-rooted tree.}
 	\label{interbranch}
 \end{figure}
+
+Now the sub-rooted tree by either \texttt{splitNodeA} or \texttt{splitNodeB} must move depending on weight. As an example, if \texttt{weightNodes[splitNodeA] > weightNodes[splitNodeB]}, then the whole sub-rooted tree by \texttt{splitNodeB} must move away from the central path from root by $\texttt{dist}=1.0$. This also means that the coordinate of $j$ must move.
+
+After the movement, the next $i$ is checked. Looping through major nodes is continued until no same coordinate is found, which means the function is done.
+
+\section{Notes for Programmer}
+The main output of the algorithm is the final coordinates of each node, \texttt{coordNodes}. On the other hand, the drawing of branches is actually not an output! This means that the drawing of branches must be done in a separate code/program, although I have the simple `straight line' branches (as seen in Figures \ref{setinitcoord} to \ref{interbranch}) in mind.
+
+Since the coordinate of root node and \texttt{dist} are hard-coded to $(0,0)$ and $1.0$, respectively, one can `customize' the coordinates in the following manner: $$\texttt{r + s * coordNodes[i]}$$
+for all nodes \texttt{i}, where \texttt{r} is the actual root node coordinate and \texttt{s} is a scalar.
 
 \bibliographystyle{plain}
 \bibliography{treedrawing}
