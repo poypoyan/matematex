@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\usepackage{datetime}
+\newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prediction}[theorem]{Prediction}
+
+\title{Another Possible Way Strong Set-theoretic Axioms will be Applied}
+\author{poypoyan}
+\date{\petsa\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Strong set axioms like large cardinals seem to be ``useless" outside their field. However I now see another direction to new applications of these axioms. This note is a speculation on the possibility.
+\end{abstract}
+
+There are many cases in the history of mathematics wherein newly invented/discovered objects were perceived as ``useless" initially but applications are found later on, some even world-changing. The complex numbers $a + \sqrt{-b}$ for $b \ge 0$ were first conceived by Gerolamo Cardano in his book \textit{Ars Magna} (1545), to solve a problem from the field we now call elementary algebra: find the two numbers whose sum is 10 and whose product is 40 \cite[p.~253]{history}. He called working with those numbers ``mental tortures" and the values of the two numbers ``as refined as it is useless". Nonetheless, he proceeded to apply these in his studies of finding roots of cubic equations. The imaginary unit $i=\sqrt{-1}$ then became further applicable because of Euler's formula, which established its relationship to circle, a commonly found shape of course. Complex numbers are now in the mathematical foundations of quantum mechanics, electrical engineering, and many other fields.
+
+By \textit{strong set axioms} I mean axioms independent of \textsf{ZF}. Of course large cardinal axioms are included, but I'll also include the axiom of choice and its variants. These tend to be perceived as useless outside math and most likely will remain so. It seems to me that these axioms form a roughly isolated ``higher" bubble from the more ``concrete" mathematics; here's a citation noting of this division: \cite{simpson}. However, axioms like these are already not completely useless.
+
+Dehornoy \cite{dehornoy} talks of a use of strong set axioms wherein these provide formalization for intuitive ideas such as self-similarity to more easily prove theorems in concrete mathematics. One then strives to re-prove the results without the axioms. In other words, strong set axioms can ``reveal" directions to new behaviors and constructions of concrete objects; he likens this use to intuitions provided by theoretical physics to mathematics. However, there is a ``common feeling" that these axioms will be eliminated on the proofs later on. In other words, strong set axioms are needed help, but temporary nonetheless.
+
+The ``another possible way" I have in mind came from my realization to these axioms: that these axioms posit the existence of sets we cannot construct an explicit example of\footnote{Notice that the ``official" set existence axioms of \textsf{ZF} are really about the ``allowed" basic predicates that completely determine whether an object is an element of the set or not. For example, the power set axiom means that the predicate $\phi(x) = x \subseteq y$ is an allowed predicate. The set theory \textsf{AST(+NWF)} I wrote about in \cite{astnwf} is more explicit on this.}. Since explicitly-defined objects are what computations output, and applications outside of math typically involve computations, with finite data and time, therefore the strong set axioms are limited in applicability compared to the concrete. However, axioms \textit{themselves} are explicitly-defined! This leads me to a speculation that these axioms will be applied through future computational systems involving logical statements, similar to computations around polynomials for the case of $i$.
+
+Proof theory is the study of syntactic aspects of logic. This is a branch of math because of a realization that proofs can be formalized, and hence has ``exact structure" like any other mathematical object. The focus on proofs is because constructing proofs is what mathematicians do with mathematical language...so far. Maybe in the future we'll have needed operations and transformations with logical statements as input or output beyond directly using those in proving. Maybe in the future we have more understanding on the \textit{structures around} several axioms and inference rules. It is important to note that the structures around logical statements are concete structures, and hence the higher bubble's boundary is actually illusory. Imagine a future mathematics wherein we manipulate logical statements a bit like what we do in numbers: find two statements whose \textless operation 1\textgreater\ is \textless statement 1\textgreater\ and whose \textless operation 2\textgreater\ is \textless statement 2\textgreater. Okay that is ridiculous, but I hope that that elucidates.
+
+There is an indication that strong set axioms may have that future. In many journal articles involving large cardinals in general, it is common to mention in introduction an observation that ``natural" theories involving large cardinal axioms tend to be linearly ordered by consistency strength\cite{hamkins2025}. Look, ``natural" smells like a property of theories (i.e., collections of statements) to me, awaiting a future competition among several formalizations, consistency strength is a relaton between theories, and the mentioned property of that relation, linear ordering, is concrete. Therefore, set theorists are aware of this idea of structures around statements.
+
+This kind of application of strong set axioms will be very indirect, and thus it may take a long while before this happens, if ever. Also, even if we already have good understanding of structures around strong set axioms, it is not clear to me right now if there would even be concrete math problems wherein those structures are \textit{actually needed} for solutions. Lastly, concrete math statements are logical statements too, with their own structures around each other. Therefore, strong set axioms will not be unique to this application. We haven't really moved from where we started---limited applicability of strong set axioms still holds.
+
+The new objects, proof techniques, and other mental technologies mathematicians come up at one point in time are ``easy" to define with respect to the ambient mathematics of that time. Strong set axioms are no exception indeed. However, their perceived ``uselessness" outside their field made me ask: Why did those axioms came up in our times? If the above speculation happened, I am certain that future mathematicians will know the answers, similar to the fundamental theorem of algebra for the case of $i$.
+
+\bibliographystyle{plain}
+\bibliography{set-axioms}
+\end{document}
