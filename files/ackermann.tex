@@ -60,7 +60,7 @@ On the contrary, consider the Axiom of Choice (AC), a well-known axiom independe
 The next motivation is to make the universe(s) ``as closed as possible". Because of this, we decided to:
 \begin{itemize}
 \item Restrict Extensionality to sets ($x \in V$) only.
-\item Put super-completeness inside Ackermann schemas instead of it being an axiom on its own. This is done so that when we work on multiple universes $V_0, V_1, \ldots$ such that $V_0 \in V_1 \in \ldots,$ $V_0 \subset V_1 \subset \ldots,$ and $\textsf{AST+NWF}(V_0) \wedge \textsf{AST+NWF}(V_1) \wedge\ldots,$ no additional sets in $V_0$ will be shown to exist through the higher universes (i.e., $V_1, \ldots$).
+\item Put super-completeness inside Ackermann schemas instead of it being an axiom on its own. This is done so that when we work on multiple universes $V_0, V_1, \ldots$ such that $V_0 \in V_1 \in \ldots,$ and $\textsf{AST+NWF}(V_0) \wedge \textsf{AST+NWF}(V_1) \wedge\ldots,$ no additional sets in $V_0$ will be shown to exist through the higher universes (i.e., $V_1, \ldots$).
 \end{itemize}
 
 Now the Non-well-founded Ackermann Schema is formulated for easy contruction of non-well-founded sets (obviously), but it is a beast! Nevertheless, the intuition is actually simple:
@@ -86,7 +86,7 @@ On the other hand, we have a weaker variant of Replacement at home:
 \begin{align*}
     \forall w(w \in a \rightarrow \exists y(y \in V \wedge \forall v &(v \in y \leftrightarrow \varphi(v, w, \ldots)))) \\ \rightarrow \exists x &(x \in V \wedge \forall y(y \in x \leftrightarrow \exists w(w \in a \wedge \forall v (v \in y \leftrightarrow \varphi(v, w, \ldots)))))
 \end{align*}
-where $a \in V$ and the other free variables of $\varphi$ are always elements of $V$ \textit{and not equal to} $V$. The relation between this schema and the original Replacement is akin to the relation between the first-order induction schema and the second-order induction axiom in arithmetic.
+where $a \in V$ and the other free variables of $\varphi$ are always elements of $V$ \textit{and not equal to} $V$. The relation between this schema and the original Replacement is akin to the relation between the first-order induction schema and the second-order induction axiom in arithmetic. The weaker variant only provides ``explicit" existence and uniqueness of sets, whereas the original only cares about \textit{the} existence and uniqueness of sets, regardless of how those came about.
 
 \bibliographystyle{plain}
 \bibliography{ackermann}
