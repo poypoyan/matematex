@@ -80,13 +80,13 @@ All set construction axioms of ZF (relativized to $V$) are straightforward to pr
 
 Here's the Replacement Schema, relativized to $V$:
 $$\forall w(w \in a \rightarrow \exists! y(y \in V \wedge \varphi(w, y, \ldots))) \rightarrow \exists x(x \in V \wedge \forall y(y \in x \leftrightarrow y \in V \wedge \exists w(w \in a \wedge \varphi(w, y, \ldots))))$$
-where $a \in V$ and the other free variables of $\varphi$ are either elements of $V$ \textit{or equal to} $V$. What about our variant? We'll leave this as a conjecture/``to-do" for now. We lean towards ``no" (our theory cannot prove Replacement), but we haven't found a counterexample either.
+where $a \in V$ and the constants of $\varphi$ are either elements of $V$ \textit{or equal to} $V$. What about our variant? It cannot: if it can, then we must be able to find a predicate $\phi'$ such that its constants are all elements of $V$ and $\phi' \leftrightarrow y \in V \wedge \exists w( w \in a \wedge \varphi(w, y, \ldots))$. But we have no way to remove that $V$ in $y \in V \wedge \exists w \ldots$ to construct $\phi'$ because $\textsf{Ack}(V)$ and $\textsf{NWFAck}(V)$ only works on predicates whose constants are all elements of $V$!
 
-Nonetheless, we have a ``weaker" variant of Replacement at home:
+Nonetheless, we have a weaker variant of Replacement at home that we prefer to use:
 \begin{align*}
     \forall w(w \in a \rightarrow \exists y(y \in V \wedge \forall v &(v \in y \leftrightarrow \varphi(v, w, \ldots)))) \\ \rightarrow \exists x &(x \in V \wedge \forall y(y \in x \leftrightarrow \exists w(w \in a \wedge \forall v (v \in y \leftrightarrow \varphi(v, w, \ldots)))))
 \end{align*}
-where $a \in V$ and the other free variables of $\varphi$ are always elements of $V$ \textit{and not equal to} $V$. The relation between this schema and the original Replacement is akin to the relation between the first-order induction schema and the second-order induction axiom in arithmetic. In the antecedent, the weaker variant demands ``explicit" existence and uniqueness of sets, whereas the original only demands \textit{the} existence and uniqueness of sets, regardless of how those came about.
+where $a \in V$ and the constants of $\varphi$ are all elements of $V$. The relation between this schema and the original Replacement is akin to the relation between the first-order induction schema and the second-order induction axiom in arithmetic. In the antecedent, the weaker variant demands ``explicit" existence and uniqueness of sets, whereas the original only demands \textit{the} existence and uniqueness of sets, regardless of how those came about.
 
 \bibliographystyle{plain}
 \bibliography{ackermann}
