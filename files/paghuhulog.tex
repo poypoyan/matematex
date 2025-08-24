@@ -56,7 +56,7 @@ Ngayon, paano na maghulog ng panaguri na DIB? May dalawang paraan:
 
 Mula sa unang paraan nga ang anyo ng $\phi$ sa \textsf{NWFAck} ng \cite{ast-nwf}---hinulog ang $\phi$ nks nasa loob ang $\phi$ sa $a$. Tila bagá may ``salaming" tinitignan ang panaguri upang makita at mailarawan ang sarili kasama ng ibang nakikita sa salamin.
 
-Mula sa ika-2ng paraan naman ang paghuhulog ng panaguri na di lang basta binabanggit ang sarili (\textit{self-referential}), para ng balintuna ni Yablo\cite{yablo} sa halip ng balintuna ng sinungaling. Datapwat káya pa rin ng \textsf{AST+NWF} na iwari ang ika-2ng paraan sa pamamagitan ng unang paraan: kailangan ng $\phi$ ng isang pantanging baryabol $z_0\in\mathbb{N}$ (kumbaga $\phi(z_0, \ldots)$) nks ang bawat instansya ng $\phi$ sa loob ng $a$ ay may anyong $\phi(z'_0, \ldots), z'_0 \in\mathbb{N}$.
+Mula sa ika-2ng paraan naman ang paghuhulog ng panaguri na di lang basta binabanggit ang sarili (\textit{self-referential}), para ng balintuna ni Yablo\cite{yablo} sa halip ng balintuna ng sinungaling. Datapwat káya pa rin ng \textsf{AST+NWF} na iwari ang ika-2ng paraan sa pamamagitan ng unang paraan: kailangan ng $\phi$ ng isang pantanging baryabol $z_0\in\mathbb{N}$ (kumbaga $\phi(z_0, \ldots)$) nks ang bawat banggit ng $\phi$ sa loob ng $a$ ay may anyong $\phi(z'_0, \ldots), z'_0 \in\mathbb{N}$.
 
 \section{Isang Pagtutumbas para sa mga Panaguri}
 
@@ -64,12 +64,12 @@ Ang unang paraan lang ang pagtutuunan dito. Ang sumusunod ay isang paghuhulog ng
 
 \begin{definition}
 \label{tumbasan}
-Ang dalawang panaguring DIB $\textsf{p}_1$ at $\textsf{p}_2$ nks iisa ang dami ng baryabol ay ituturing na \textbf{iisa} kung mula sa pag-aakala na iisa ang instansya ng $\textsf{p}_1$ at ng $\textsf{p}_2$ kkiln\footnote{kung at kung ito lang na (if and only if)} iisa ang anyo ng pinasok sa dalawa (halimbawa, $\textsf{p}_1(a, b, c) \leftrightarrow \textsf{p}_2(a, b, c)$ at $\neg(\textsf{p}_1(a, b, c) \leftrightarrow \textsf{p}_2(a, c, b))$), ay mapatutunayang $a_1 \leftrightarrow a_2$.
+Ang dalawang panaguring DIB $\textsf{p}_1$ at $\textsf{p}_2$ ay ituturing na \textbf{iisa} kung iisa ang dami ng ipinapasok na baryabol sa dalawa, at, kung ipinalit ang $\textsf{p}_1$ sa lahat ng banggit ng $\textsf{p}_2$ sa $a_2$, mapatutunayang $a_1 \leftrightarrow a_2$. Dagdag pa rito, kung hindi iisa ang dalawang panaguri, ang tipón na mabubuo sa isa ay ípapalagay na hinding-hindi tutumbas sa anumang mabubuo sa isa pa.
 \end{definition}
 
-Ayto ang isang kongkretong halimbawa: ang $$\textsf{p}_1(z_0, z_1) \leftrightarrow \neg\forall x(\textsf{p}_1(x, z_0) \rightarrow \textsf{p}_1(x, z_1))$$ at $$\textsf{p}_2(z_0, z_1) \leftrightarrow \exists y(\neg \textsf{p}_2(y, z_1) \wedge \textsf{p}_2(y, z_0))$$ ay iisa. Ang inakalang tumbasan ay $\textsf{p}_1(x, z_0) \leftrightarrow \textsf{p}_2(y, z_0)$ at $\textsf{p}_1(x, z_1) \leftrightarrow \textsf{p}_2(y, z_1)$.
+Ayto ang isang kongkretong halimbawa: ang $$\textsf{p}_1(z_0, z_1) \leftrightarrow \neg\forall x(\textsf{p}_1(x, z_0) \rightarrow \textsf{p}_1(x, z_1))$$ at $$\textsf{p}_2(z_0, z_1) \leftrightarrow \exists y(\neg \textsf{p}_2(y, z_1) \wedge \textsf{p}_2(y, z_0))$$ ay iisa.
 
-Ibig sabihin, kung $\textsf{p}_1 \leftrightarrow \textsf{p}_2$, di $\textsf{T+}\textsf{p}_1\textsf{+p}_2 = \textsf{T+}\textsf{p}_1$! Sa kaso ng \textsf{AST+NWF}, ang pagtatakda nitong katumbasan ay nagdudulot ng pagkanatatangi ng mga DIB na tipón. Dahil dito'y ibig ko ngang itakda ito kapagka ginagamit ang teyorya.  
+Ibig sabihin, kung $\textsf{p}_1 \leftrightarrow \textsf{p}_2$ aydi $\textsf{T+}\textsf{p}_1\textsf{+p}_2 = \textsf{T+}\textsf{p}_1$! Sa kaso ng \textsf{AST+NWF}, ang pagtatakda nitong katumbasan ay nagdudulot ng pagkanatatangi ng mga DIB na tipón. Dahil dito'y ibig ko ngang itakda ito kapagka ginagamit ang teyorya.
 
 \section{Sa Ibáyo ng Karaniwang Paghuhulog ng Istruktura?}
 
