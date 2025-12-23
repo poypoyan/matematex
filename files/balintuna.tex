@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{datetime}
+\newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
+
+\newtheorem{definition}{Kahulugan}[section]
+\newtheorem{theorem}{Teyorem}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{problem}[theorem]{Problema}
+\renewcommand{\abstractname}{Abstrak}
+\renewcommand{\refname}{Sanggunian}
+
+\title{Ilang mga Talâ sa Balintuna at Parakonsistensiya}
+\author{poypoyan}
+\date{\petsa\today}   % \petsa\today
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Ito'y isang pagtitipon at saka paglalahad ng ilang mga talâ sa aking talaarawan patungkol sa balintuna (paradox) at pangangatuwiran kahit may (mga) kontradiksiyon.
+\end{abstract}
+
+\section{Isa pang Anyo ng Balintuna (09/09/2024)}
+Noong isinulat ko ang papel patungkol sa diyagonalisasyon\cite{diagonal}, napaisip ako kung ang ibang kabalintunaan ay umaayon doon. Sa pagkakaalala ko, ang Balintuna ng Sinungaling ay oo, at gayundin ang kay Russell. Subali't para bagáng hindi sa Balintuna ng Káya ang Lahat (Omnipotence Paradox). At ngayon, may ideya na ako sa istruktura niyon at ng isa pa. Ganito ang nangyayari: may 2 o higit pang uri (class) na may dulot sa isa't isa.
+
+\begin{center}
+\begin{tikzpicture}[node distance = 1cm]
+    \node (1) at (-1, 0) {A};
+    \node (2) at (1, 0) {B};
+    \draw[->] (1) to [bend left] node [midway,above]{may dulot} (2);
+    \draw[->] (2) to [bend left] node [midway,below]{may dulot} (1);
+\end{tikzpicture}
+,
+\begin{tikzpicture}[node distance = 1cm]
+    \node (1) at (-1, 0) {A};
+    \node (2) at (1, 0) {B};
+    \node (3) at (0, -1.732) {C};
+    \draw[->] (1) to [bend left] (2);
+    \draw[->] (2) to [bend left] (3);
+    \draw[->] (3) to [bend left] (1);
+\end{tikzpicture}
+,\ \ldots
+\end{center}
+
+At may ``idinidiin" na lagay sa lahat ng nasa $B$ ang isa sa $A$, datapwa't may isa sa $B$ na nagdudulot ng lagay na sumasalungat sa naunang lagay! Mabalik na táyo sa balintuna ng káya ang lahat, at suriin iyon. Ang dalawang uri doon ay \underline{Pahayag} at \underline{Gawain}:
+
+\begin{center}
+\begin{tikzpicture}[node distance = 1cm]
+    \node (1) at (-2, 0) {Pahayag};
+    \node (2) at (2, 0) {Gawain};
+    \draw[->] (1) to [bend left] node [midway,above]{may dulot} (2);
+    \draw[->] (2) to [bend left] node [midway,below]{may dulot} (1);
+\end{tikzpicture}
+\end{center}
+
+\noindent\underline{Unang lagay:} Mula sa pahayag, ang ``pag-iral ng isang maykáyang gawin ang lahat" ay bubuhat ng potensiyal na pagkatapós ng anumang gawain.\\
+\underline{Sumasalungat na lagay:} ang pahayag sa bato bílang ``di mabuhat-buhat ninuman". Ito ay sumasalungat sa \textit{isang} pahayag lang (``\ldots káyang gawin ang lahat"). Ano ang sanhi nito? Ang pagtapos sa paglikha ng bato, na isang gawain!
+
+Sa kasong ito, ang pagdiin ng lagay \textit{sa lahat} ay di nasa lahat ng uri; \underline{di-pantay} ang itatawag ko rito. Ang sumusunod na balintuna ay isang halimbawa naman ng \underline{pantay}: Ang Balintuna ng Mangyayari kung Nagtagpo ang Di Mapigil-pigil sa Lakas at Di Magalaw-galaw na Bagay (Unstoppable Force Meets an Immovable Object). Nasa ngalan na ang dalawang uri (Lakas at Bagay) at ang dalawang lagay na idinidiin: ``di mapigil-pigil" = walang bagay na makapipigil, at ``di magalaw-galaw" = walang lakas na makagagalaw.
+
+\section{Isang Lohikang Parakonsistensiya (27/09/2025)}
+Tingin ko nahanap ko na ang pakaiibigin kong lohikang parakonsistensiya, at marahil ito ang pinkasimpleng pagbabago mula sa lohikang klasikal: magsimula sa karaniwang semantiks ng lohikang klasikal, ang talahanayan ng mga katotohanan (truth table), at ang tanging pagbabago lang ay paghuhulog ng $\Gamma\models\varphi$:
+
+\begin{quote}
+$\Gamma\models\varphi$ kung ang \underline{lahat ng malalayang baryabulo ng $\varphi$ ay mula sa $\Gamma$}, at sa lahat ng $\mathcal{M}$ nks\footnote{na kung saan (such that)} $\mathcal{M}\models\Gamma$, aydi $\mathcal{M}\models\varphi$.
+\end{quote}
+
+Ang nakasalungguhit ang bago. Iyon na iyon! Paano nito natanggal ang ex falso ($\varphi, \neg\varphi\models\gamma$)? Sa kaso ng proposisyonal na lohika (wala munang $\forall$ at $\exists$), dapat ang lahat ng baryabulo sa konklusiyon ay mga baryabulo rin ng premis! Sa halip ng pagsabog ay $\neg a$ at $a$ na lámang ang mga konklusiyon sa mga premis na $a, \neg a$. Bukod sa pagsabog ay matatanggal na rin ang pagpapasok ng $\vee$ ($\varphi\models\varphi\vee\gamma$). At ang huli kong sasabihin, paano na ang simbolo ng katotohanan $\top$? Tanggal rin ba ang $\top\models\varphi\wedge\neg\varphi\rightarrow\gamma$? Hindi, ngunit kailangang maging ``daglat" ang $\top$ ng pormulang gawa sa mga baryabulo: $$\top(A) = A \vee \neg A$$ $$\top(A,B) = (\neg A \wedge \neg B) \vee (\neg A \wedge B) \vee (A \wedge \neg B) \vee ( A \wedge B)$$at alam na ang pagtutuloy. Ibig ko na ito kasi bukod sa malápit sa lohikang klasikal, nakikita ko nang hindi mahirap mangatuwiran gamit ito---alalahanin lámang ang mga baryabulo sa magkabilang banda ng $\models$!
+
+Ang susunod na gagawin ay bumuo ng listahan ng mga tuntunin ($\Gamma\vdash\varphi$) at patunayan ang mga teyorem ng katinuan (soundness) at kabuuan (completeness).
+
+Karagdagang talang wala sa talaarawan: Lumitaw na lalo ang pagkakaiba ng $\vdash$ at ng $\rightarrow$, na madalas napag-iisa. Kung ang $\rightarrow$ ay materyal na implikasiyon pa rin ($A\rightarrow B$ = sa lahat ng mga ``kalagayan" nks totoo ang $A$, totoo rin doon ang $B$), sinisimbolo ng $\vdash$ ang mga \textit{maaaring kilos natin sa pangangatuwiran}. Sinasabi ng bagong $\models$ na kapagka may narating na kontradiksiyon, humingang malalim at hindi táyo tutuloy sa pangkokonklusiyon ng kung ano-ano, at ito naman talaga ang ating kinikilos, hindi ba?
+
+\section{Kayamanan ng Mangasasabi (19/10/2025)}
+
+\bibliographystyle{plain}
+\bibliography{balintuna}
+\end{document}
