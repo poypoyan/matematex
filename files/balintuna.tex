@@ -5,6 +5,7 @@
 \usepackage{csquotes}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
 
 \usepackage{datetime}
 \newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
@@ -18,7 +19,7 @@
 
 \title{Ilang mga Talâ sa Balintuna at Parakonsistensiya}
 \author{poypoyan}
-\date{\petsa\today}   % \petsa\today
+\date{25 Dec 2025}   % \petsa\today
 
 \begin{document}
 
@@ -66,8 +67,20 @@ At may ``idinidiin" na lagay sa lahat ng nasa $B$ ang isa sa $A$, datapwa't may 
 
 Sa kasong ito, ang pagdiin ng lagay \textit{sa lahat} ay di nasa lahat ng uri; \underline{di-pantay} ang itatawag ko rito. Ang sumusunod na balintuna ay isang halimbawa naman ng \underline{pantay}: Ang Balintuna ng Mangyayari kung Nagtagpo ang Di Mapigil-pigil sa Lakas at Di Magalaw-galaw na Bagay (Unstoppable Force Meets an Immovable Object). Nasa ngalan na ang dalawang uri (Lakas at Bagay) at ang dalawang lagay na idinidiin: ``di mapigil-pigil" = walang bagay na makapipigil, at ``di magalaw-galaw" = walang lakas na makagagalaw.
 
+\section{Natatángang mga Balintuna (06/12/2024)}
+Minsan talaga sa buhay ay may pinananatiling balintuna sa isipan na para bang tinatangan ito. Di na ito maipagkakaila. Ngayon, bakit? Ano-anong mga kinikilos natin sa isipan at natatangan ang balintuna? Di na rin maipagkakaila na hangga't maaari ay ayaw natin ng balintuna, batid man itong pagkaayaw o hindi. Ngayon, maglalahad ako ng dalawang halimbawa ng pagtangan ng balintuna:
+\begin{enumerate}
+\item Sa pisikang teyoretikal, isang litaw na suliraning di pa nalulutas ang ``pagsasama" ng dalawang teyorya, ang Kuwantum na Mekaniks at Pangkalahatang Relatibidad. Basta ang nauna ay mainam na pampaliwanag sa mga pinakamaliliit na tipik, subali't ang nahulí ay sa mga pinakamalalaki tulad ng bituin, galaksiya, mga pang-agham-tálà kumbaga. Ngayon, alam na kasi ng mga nagpipisika na may balintuna sa pagitan ng dalawa; di maaaring sabay na tama ang dalawa! Gayunman, ginagamit pa rin ang dalawa at di tinapon sa limot. Kunsabagay, may napakadaming kumpirmasyon pasasa dalawa, at napakaraming teknolohiyang inimbentong may gabay ng dalawa.
+\item Ito'y lalong praktikal, malápit sa trabahong salukoy, at sa katunaya'y isinulat ko na (29/04/2024) at patungkol din sa parakonsistensiya:
+\begin{quote}
+\ldots Para bagá yaong tahimik lang kung gumagana ang sistema, datapwa't dádaíng na, nanghihingi ng masisisihan, kung hindi na gumagana!
+\end{quote}
+Ang halimbawang naiisip ko ay programa (sa kompiyuter). Kahit di tuluyang sinubok, o batid na malamáng ay may sira, maaaring gamitin pa rin iyon.
+\end{enumerate}
+Mula sa dalawang halimbawa, napagtanto kong di dahil lang sa may balintuna nang nahulo mula sa kaisipan, di na kapaki-pakinabang iyon. Di talaga natin tuwirang tinatangan ang mga balintuna, bagkus tinatangan ang napakikinabangang kaisipan. Naisip ko rin ngayon na ang matitirang konsistent sa lohikang parakonsistensiya ay ang pangangatuwiran natin sa mga teyorya, ugnayan sa pagitan ng mga iyon, at mga pamamaraan ng pagtatanggal ng kontradiksiyon sa mga iyon kung mayroon man.
+
 \section{Isang Lohikang Parakonsistensiya (27/09/2025)}
-Tingin ko nahanap ko na ang pakaiibigin kong lohikang parakonsistensiya, at marahil ito ang pinkasimpleng pagbabago mula sa lohikang klasikal: magsimula sa karaniwang semantiks ng lohikang klasikal, ang talahanayan ng mga katotohanan (truth table), at ang tanging pagbabago lang ay paghuhulog ng $\Gamma\models\varphi$:
+Tingin ko nahanap ko na ang pakaiibigin kong lohikang parakonsistensiya, at marahil ito ang pinakasimpleng pagbabago mula sa lohikang klasikal: magsimula sa karaniwang semantiks ng lohikang klasikal, ang talahanayan ng mga katotohanan (truth table), at ang tanging pagbabago lang ay paghuhulog ng $\Gamma\models\varphi$:
 
 \begin{quote}
 $\Gamma\models\varphi$ kung ang \underline{lahat ng malalayang baryabulo ng $\varphi$ ay mula sa $\Gamma$}, at sa lahat ng $\mathcal{M}$ nks\footnote{na kung saan (such that)} $\mathcal{M}\models\Gamma$, aydi $\mathcal{M}\models\varphi$.
@@ -77,9 +90,38 @@ Ang nakasalungguhit ang bago. Iyon na iyon! Paano nito natanggal ang ex falso ($
 
 Ang susunod na gagawin ay bumuo ng listahan ng mga tuntunin ($\Gamma\vdash\varphi$) at patunayan ang mga teyorem ng katinuan (soundness) at kabuuan (completeness).
 
-Karagdagang talang wala sa talaarawan: Lumitaw na lalo ang pagkakaiba ng $\vdash$ at ng $\rightarrow$, na madalas napag-iisa. Kung ang $\rightarrow$ ay materyal na implikasiyon pa rin ($A\rightarrow B$ = sa lahat ng mga ``kalagayan" nks totoo ang $A$, totoo rin doon ang $B$), sinisimbolo ng $\vdash$ ang mga \textit{maaaring kilos natin sa pangangatuwiran}. Sinasabi ng bagong $\models$ na kapagka may narating na kontradiksiyon, humingang malalim at hindi táyo tutuloy sa pangkokonklusiyon ng kung ano-ano, at ito naman talaga ang ating kinikilos, hindi ba?
+Karagdagang talang wala sa talaarawan: Lumitaw na lalo ang pagkakaiba ng $\vdash$ at ng $\rightarrow$, na madalas napag-iisa. Kung ang $\rightarrow$ ay materyal na implikasiyon pa rin ($A\rightarrow B$ = sa lahat ng mga ``kalagayan" nks totoo ang $A$, totoo rin doon ang $B$), sinasagisag naman ng $\vdash$ ang mga \textit{maaaring kilos natin sa pangangatuwiran}. Sinasabi ng bagong $\models$ na kapagka nakatagpo ng kontradiksiyon, humingang malalim at hindi táyo tutuloy sa pangkokonklusiyon ng kung ano-ano, at ito naman talaga ang ating kinikilos, hindi ba?
 
-\section{Kayamanan ng Mangasasabi (19/10/2025)}
+\section{Pagkabukod ng Kaganapan, Kayamanan ng Mangasasabi (19/10/2025)}
+Ayto ang isa pang ibig sabihin ng semantiks ng bagong tala kong lohikang parakonsistensiya (27/09/2025): pagkabukod (isolation) ng ``kaganapan" sa mga tipón ng pahayag (na tinatawag na ``teyorya" sa larang ng lohikang matematika). Ito'y sapagka't walang bagong proposisyon ang lilitaw na bigla sa konklusyon, bagkus ang nangyayari'y bágong pagsasama-sama ng mga bahagi ng mga naunang proposisyon. Sa palarawan:
+
+\begin{center}
+\begin{tikzpicture}[node distance = 0.5cm]
+    \node (1) at (-3,1)   [draw, ellipse]   {Teyorya 1};
+    \node (2) at (-2,-1)   [draw, ellipse]   {Teyorya 2};
+    \node (i) at (0, 0) {$\implies$};
+    \node (1n) at (3,1)   [draw, ellipse, align=left]   {Teyorya 1\\$\vdash k_1$ $\vdash k_2$ $\vdash k_3$};
+    \node (2n) at (4,-1)   [draw, ellipse, align=left]   {Teyorya 2\\$\vdash k_4$ $\vdash k_5$ $\vdash k_6$};
+\end{tikzpicture}
+\end{center}
+
+Kahit $k_1 = \neg k_5$ o $k_5 = \neg k_6$, di sasabog ang kontradiksyon sa loob o pagitan ng mga teyorya tungo sa isa't isa o iba pa.
+
+Malamáng naisulat ko na rin noon pa ang pahayag na nabása ko mandin sa isang aklat na maganda kung may masasabi táyo sa (iba't ibang) kontradiksiyon---payak at masalimuot, tulad ng ibang paksa---di tulad na giit ng lohikang klasikal na (halos) wala kasi lahat ay mahuhulo mula sa kontradiksyon. O ngayong may lohika nang maganda, nasaan ang mangasasabi? Wala pa akong halimbawa paririto, datapwa't may pahiwatig sa larawan sa itaas: mahalaga ang bakod ng mga teyorya sa pag-iiba; ang ``tinagusang bakod" ng kontradiksyon ang pinagkaiba ng $k_1 = \neg k_5$ sa $k_5 = \neg k_6$.
+
+\begin{center}
+\begin{tikzpicture}[node distance = 0.5cm]
+    \node (1n) at (-4,1)   [draw, ellipse, align=left]   {Teyorya 1\\$\vdash k_1$};
+    \node (2n) at (-3,-1)   [draw, ellipse, align=left]   {Teyorya 2\\$\vdash k_5$ $\vdash k_6$};
+    \draw[thick, draw=red] (-4.3, 0.65) -- (-3.4, -1);
+    \node (i) at (0, 0) {kumpara sa};
+    \node (1n) at (3,1)   [draw, ellipse, align=left]   {Teyorya 1\\$\vdash k_1$};
+    \node (2n) at (4,-1)   [draw, ellipse, align=left]   {Teyorya 2\\$\vdash k_5$~~~~~$\vdash k_6$};
+    \draw[thick, draw=red] (3.7, -1.27) -- (4.6, -1.27);
+\end{tikzpicture}
+\end{center}
+
+Idagdag sa lohikang maganda ang iba't ibang pagbubuo't ugnayan ng mga teyorya (na mga tipón mandin; alalahanin ang $\cup$, $\cap$, \ldots) at ang pagiging anuman ng dami ng pahayag na bumubuo ng kontradiksyon (tingnan din ang mga ``uri" sa unang seksiyon sa itaas) at natatanaw ko na ang kayamanan ng mangasasabi!
 
 \bibliographystyle{plain}
 \bibliography{balintuna}
