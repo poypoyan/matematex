@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
 \usepackage{amsmath, amssymb, amsthm}
+\usepackage{ebproof}
 \usepackage{hyperref}
 \usepackage{csquotes}
 \usepackage{tikz}
@@ -79,7 +80,7 @@ Ang halimbawang naiisip ko ay programa (sa kompiyuter). Kahit di tuluyang sinubo
 \end{enumerate}
 Mula sa dalawang halimbawa, napagtanto kong di dahil lang sa may balintuna nang nahulo mula sa kaisipan, di na kapaki-pakinabang iyon. Di talaga natin tuwirang tinatangan ang mga balintuna, bagkus tinatangan ang napakikinabangang kaisipan. Naisip ko rin ngayon na ang matitirang konsistent sa lohikang parakonsistent ay ang pangangatuwiran natin sa mga teyorya, ugnayan sa pagitan ng mga iyon, at mga pamamaraan ng pagtatanggal ng kontradiksiyon sa mga iyon kung mayroon man.
 
-\section{Isang Lohikang Parakonsistent (27/09/2025)}
+\section{Isang Lohikang Parakonsistent (27/09/2025)} \label{paracon}
 Tingin ko nahanap ko na ang pakaiibigin kong lohikang parakonsistent, at marahil ito ang pinakasimpleng pagbabago mula sa lohikang klasikal: magsimula sa karaniwang semantiks ng lohikang klasikal, ang talahanayan ng mga katotohanan (truth table), at ang tanging pagbabago lang ay paghuhulog ng $\Gamma\models\varphi$:
 
 \begin{quote}
@@ -122,6 +123,59 @@ Malamáng naisulat ko na rin noon pa ang pahayag na nabása ko mandin sa isang a
 \end{center}
 
 Idagdag sa lohikang maganda ang iba't ibang pagbubuo't ugnayan ng mga teyorya (na mga tipón mandin; alalahanin ang $\cup$, $\cap$, \ldots) at ang pagiging anuman ng dami ng pahayag na bumubuo ng kontradiksyon (tingnan din ang mga ``uri" sa unang seksiyon sa itaas) at natatanaw ko na ang kayamanan ng mangasasabi!
+
+\section{Ang Sikwent na Kalkyulus para sa \ref{paracon} (07/06/2026)}
+Ang sistema ay gayundin sa sistemang \textbf{LK} ni Gentzen para sa lohikang klasikal, subalit may pagbabago lang sa mga sumusunod na tuntunin:
+\begin{itemize}
+    \item Paghihina sa kanan ($WR$):
+        \begin{prooftree}
+        \hypo{\Gamma \vdash \Delta}
+        \infer1{\Gamma \vdash \varphi, \Delta}
+        \end{prooftree}
+    \item $\vee$ sa kanan ($\vee R$):
+        \begin{prooftree}
+        \hypo{\Gamma \vdash \gamma, \Delta}
+        \infer1{\Gamma \vdash \varphi \vee \gamma, \Delta}
+        \end{prooftree}
+    at
+        \begin{prooftree}
+        \hypo{\Gamma \vdash \gamma, \Delta}
+        \infer1{\Gamma \vdash \gamma \vee \varphi, \Delta}
+        \end{prooftree}
+    \item $\rightarrow$ sa kanan ($\rightarrow R$):
+        \begin{prooftree}
+        \hypo{\Gamma, \varphi \vdash \gamma, \Delta}
+        \infer1{\Gamma \vdash \varphi \rightarrow \gamma, \Delta}
+        \end{prooftree}
+    \item $\neg$ sa kanan ($\neg R$):
+        \begin{prooftree}
+        \hypo{\Gamma, \varphi \vdash \Delta}
+        \infer1{\Gamma \vdash \neg \varphi, \Delta}
+        \end{prooftree}
+\end{itemize}
+
+Markahan ang proposisyong may $\varphi$ sa ibaba (hal.,
+        \begin{prooftree}
+        \hypo{\Gamma, \varphi \vdash \Delta}
+        \infer1{\Gamma \vdash (\neg \varphi)^{*}, \Delta}
+        \end{prooftree}
+) kung may proposisyonal na baryabulo doon na wala sa $\Gamma$. Sa anumang susunod na tuntuning gagamitin, markahan pa rin ang resultang proposisyong may $\varphi$, \textit{maliban lang kung nilipat ang buong iyon sa kaliwa (sa pamamagitan ng $\rightarrow L$  o $\neg L$)}. Hindi wasto ang patunay kung may marka ang hulíng sikwent. Halimbawa, ang sumusunod ay wasto:
+\[
+\begin{prooftree}
+    \hypo{}
+    \infer1[$(Id)$]{A \vdash A}
+    \infer1[($\vee R$)]{A \vdash (A \vee B)^{*}}
+    \infer1[($\rightarrow R$)]{\vdash (A \rightarrow (A \vee B))^{*}}
+    \infer1[($\neg L$)]{\neg(A \rightarrow (A \vee B)) \vdash}
+\end{prooftree}
+\]
+
+\begin{theorem}
+Ang pagbabagong ito ay maayos (sound) at buo (complete) ayon sa pagbabago ng semantiks sa \ref{paracon}.
+\end{theorem}
+\begin{proof}[Patunay]
+Maayos na agad kasi ginagawang mali ng marka ang mga patunay nks sa hulíng sikwent nito, may baryabulo sa kanan ng $\vdash$ na wala sa kaliwa. Sa kabiláng bandá, dahil sa wala namang tinanggal na tuntunin sa bagong sistema ng patunay, ang patunay sa \textbf{LK} ng isang $\Gamma\models\varphi$ na umaayon sa bagong semantiks sa \ref{paracon} ay patunay na rin sa bagong sistema---minarkahan lang. Dahil sa kabuuan ng \textbf{LK} sa lohikang klasikal, magiging buo na rin ang bagong sistema.
+\end{proof}
 
 \bibliographystyle{plain}
 \bibliography{balintuna}
