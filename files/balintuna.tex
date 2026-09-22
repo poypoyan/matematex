@@ -124,41 +124,41 @@ Malamáng naisulat ko na rin noon pa ang pahayag na nabása ko mandin sa isang a
 
 Idagdag sa lohikang maganda ang iba't ibang pagbubuo't ugnayan ng mga teyorya (na mga tipón mandin; alalahanin ang $\cup$, $\cap$, \ldots) at ang pagiging anuman ng dami ng pahayag na bumubuo ng kontradiksyon (tingnan din ang mga ``uri" sa unang seksiyon sa itaas) at natatanaw ko na ang kayamanan ng mangasasabi!
 
-\section{Ang Sikwent na Kalkyulus para sa \ref{paracon} (07/06/2026)}
+\section{Ang Sikwent na Kalkulus para sa \ref{paracon} (07/06/2026)}
 Ang sistema ay gayundin sa sistemang \textbf{LK} ni Gentzen para sa lohikang klasikal, subalit may pagbabago lang sa mga sumusunod na tuntunin:
 \begin{itemize}
     \item Paghihina sa kanan ($WR$):
-        \begin{prooftree}
+    \begin{prooftree}
         \hypo{\Gamma \vdash \Delta}
         \infer1{\Gamma \vdash \varphi, \Delta}
-        \end{prooftree}
+    \end{prooftree}
     \item $\vee$ sa kanan ($\vee R$):
-        \begin{prooftree}
+    \begin{prooftree}
         \hypo{\Gamma \vdash \gamma, \Delta}
         \infer1{\Gamma \vdash \varphi \vee \gamma, \Delta}
-        \end{prooftree}
+    \end{prooftree}
     at
-        \begin{prooftree}
+    \begin{prooftree}
         \hypo{\Gamma \vdash \gamma, \Delta}
         \infer1{\Gamma \vdash \gamma \vee \varphi, \Delta}
-        \end{prooftree}
+    \end{prooftree}
     \item $\rightarrow$ sa kanan ($\rightarrow R$):
-        \begin{prooftree}
+    \begin{prooftree}
         \hypo{\Gamma, \varphi \vdash \gamma, \Delta}
         \infer1{\Gamma \vdash \varphi \rightarrow \gamma, \Delta}
-        \end{prooftree}
+    \end{prooftree}
     \item $\neg$ sa kanan ($\neg R$):
-        \begin{prooftree}
+    \begin{prooftree}
         \hypo{\Gamma, \varphi \vdash \Delta}
         \infer1{\Gamma \vdash \neg \varphi, \Delta}
-        \end{prooftree}
+    \end{prooftree}
 \end{itemize}
 
 Markahan ang proposisyong may $\varphi$ sa ibaba (hal.,
-        \begin{prooftree}
-        \hypo{\Gamma, \varphi \vdash \Delta}
-        \infer1{\Gamma \vdash (\neg \varphi)^{*}, \Delta}
-        \end{prooftree}
+\begin{prooftree}
+    \hypo{\Gamma, \varphi \vdash \Delta}
+    \infer1{\Gamma \vdash (\neg \varphi)^{*}, \Delta}
+\end{prooftree}
 ) kung may proposisyonal na baryabulo doon na wala sa $\Gamma$. Sa anumang susunod na tuntuning gagamitin, markahan pa rin ang resultang proposisyong may $\varphi$, \textit{maliban lang kung nilipat ang buong iyon sa kaliwa (sa pamamagitan ng $\rightarrow L$  o $\neg L$)}. Hindi wasto ang patunay kung may marka ang hulíng sikwent. Halimbawa, ang sumusunod ay wasto:
 \[
 \begin{prooftree}
