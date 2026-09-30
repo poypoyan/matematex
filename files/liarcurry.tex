@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\usepackage{datetime}
+\newdateformat{petsa}{\the\day\ \shortmonthname[\the\month] \the\year}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+
+\title{Either This Sentence is True or $1+1=2$}
+\author{poypoyan}
+\date{\petsa\today}   % \petsa\today
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is an analysis of Liar and Curry's paradox, and through this we get variants, such as the title above.
+\end{abstract}
+
+\section{The Liar and Curry's Paradox}
+We work in classical logic. The Liar paradox:
+\begin{displayquote}
+This sentence is false.
+\end{displayquote}
+and Curry's paradox:
+\begin{displayquote}
+If this sentence is true, then $1=2$.
+\end{displayquote}
+have two properties in common (at least on how we presented these two): 1) both are self-referential sentences, and 2) both purely deal with truth and falsity of sentences. There is an assumption on sentences that \textit{must always hold}:
+\begin{align}\label{main-assump}
+A \iff A
+\end{align}
+With the self-reference, this can be interpreted as \textit{the equivalence of the truth value of ``this sentence" and the truth value of the actual content of the sentence}. Now we can formalize the paradoxes by substituting the formalized content to the right hand side. For Liar paradox:
+\begin{align*}
+&A \iff (A \rightarrow \bot) \\
+\implies &A \iff \neg A
+\end{align*}
+It is clear that \ref{main-assump} is \textit{false/contradicted} here. Now let's formalize Curry's paradox:
+\[A \iff A \rightarrow B\]
+If $B$ is false, then we are back to the formalized Liar paradox! On the other hand, in the ``classical" analysis (e.g., in \cite[An Informal Argument]{sep-curry-paradox}), the sentence makes us conclude that $B$ must be true. The convergence of the two analyses is on the fact that with the falsity of $B$, there is now contradiction. The difference is on what is involved in the contradiction: $B$ itself in the classical analysis, in contrast to \ref{main-assump} in our analysis.
+
+\section{Synthesis}
+The idea is that making \ref{main-assump} false can indicate the ``paradoxness" of the two paradoxes. Can we find variants that satisfy the two aforementioned properties? Let's stick on one independent proposition $B$:
+\[A \iff P(A, B)\]
+What about the truth of $B$ causes the contradiction instead? One such $P$ would be $\neg A \vee \neg B \iff \neg (A \wedge B)$ (setting $B$ to true simplifies to $\neg A$). Translating back to less formal, this is
+\begin{displayquote}
+This sentence and ``$1+1=2$", cannot be both true, or\\
+It's not the case that this sentence is true and $1+1=2$.
+\end{displayquote}
+Another such $P$ would be $(\neg A \vee \neg B ) \wedge (A \vee B) \iff A \veebar B$, which translates back to the title of this note:
+\begin{displayquote}
+Either this sentence is true or $1+1=2$.
+\end{displayquote}
+I find this one more aesthetically pleasing than the former because it (in English) looks similar to Curry's paradox, wherein $B$ is not under quotation and there is no direct mention of ``not" or ``false".
+
+\section{Closing Remarks}
+This analysis can be extended to multiple independent propositions or to multiple sentences referencing each other. Moreover, other paradoxes can be subject to this analysis by making explicit the assumption/s that ``must always hold" and that the paradox contradicts. In some sense, these assumptions are contexts that put the paradoxes/contradictions ``under containment", which leads us to a further elucidation of paraconsistent reasoning.
+
+\bibliographystyle{plain}
+\bibliography{liarcurry}
+\end{document}

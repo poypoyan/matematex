@@ -4,6 +4,7 @@ This is a collection of LaTeX write-ups for mathematical ideas and such that int
 **WARNING:** There is no guarantee of correctness. The priority is clarity in writing, but even that is also not guaranteed 😩. Because of this, assume that any text will be updated in the future once I thought of error/s in the current version.
 
 ### Titles
+* [Either This Sentence is True or 1 + 1 = 2](files/liarcurry.pdf)
 * [Ilang mga Talâ sa Balintuna at Parakonsistensiya](files/balintuna.pdf)
 * [Another Possible Way Strong Set-theoretic Axioms will be Applied](files/set-axioms.pdf)
 * [My ~~Abomination~~ Pet Set Theory: AST+NWF](files/ackermann.pdf)
